@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Hugh Parsonage" />
+
+<meta name="date" content="2017-10-22" />
+
+<title>Hutils</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Hutils</h1>
+<h4 class="author"><em>Hugh Parsonage</em></h4>
+<h4 class="date"><em>2017-10-22</em></h4>
+
+
+
+<div id="hutils-package" class="section level1">
+<h1><code>hutils</code> package</h1>
+<p>My name is Hugh. I’ve written some miscellaneous functions that don’t seem to belong in a particular package. I’ve usually put these in <code>R/utils.R</code> when I write a package. Thus, <code>hutils</code>.</p>
+<p>This vignette just goes through each exported function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+suggested_packages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;nycflights13&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;microbenchmark&quot;</span>)
+opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="kw">all</span>(<span class="kw">vapply</span>(suggested_packages, requireNamespace, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">FUN.VALUE =</span> <span class="ot">FALSE</span>)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tryCatch</span>({
+  <span class="kw">library</span>(geosphere)
+  <span class="kw">library</span>(nycflights13)
+  <span class="kw">library</span>(dplyr, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)
+  <span class="kw">library</span>(ggplot2)
+  <span class="kw">library</span>(microbenchmark)
+  <span class="kw">library</span>(data.table, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)
+  <span class="kw">library</span>(magrittr)
+  <span class="kw">library</span>(hutils, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)
+}, 
+<span class="co"># requireNamespace does not detect errors like</span>
+<span class="co"># package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version</span>
+<span class="dt">error =</span> <span class="cf">function</span>(e) {
+  opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="ot">FALSE</span>)
+})</code></pre></div>
+<pre><code>## Loading required package: sp</code></pre>
+<div id="aliases" class="section level2">
+<h2>Aliases</h2>
+<p>These are simple additions to <code>magrittr</code>‘s aliases, including: capitalized forms of <code>and</code> and <code>or</code> that invoke <code>&amp;&amp;</code> and <code>||</code> (the ’long-form’ logical operators) and <code>nor</code> / <code>neither</code> functions.</p>
+<p>The main motivation is to make the source code easier to indent. I occasionally find such source code easier to use.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">OR</span>(<span class="kw">OR</span>(<span class="ot">TRUE</span>,
+      <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)),  ## short-circuits
+   <span class="kw">AND</span>(<span class="ot">FALSE</span>,
+       <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)))  </code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p><code>nor</code> (or <code>neither</code> which is identical) returns <code>TRUE</code> if and only if both arguments are <code>FALSE</code>.</p>
+</div>
+<div id="coalesce-and-if_else" class="section level2">
+<h2><code>coalesce</code> and <code>if_else</code></h2>
+<p>These are near drop-in replacements for the equivalent functions from <code>dplyr</code>. They are included here because they are very useful outside of the tidyverse, but may be required in circumstances where importing <code>dplyr</code> (with all of its dependencies) would be inappropriate.</p>
+<p>They attempt to be drop-in replacements but:</p>
+<ol style="list-style-type: decimal">
+<li><code>hutils::if_else</code> only works with <code>logical</code>, <code>integer</code>, <code>double</code>, and <code>character</code> type vectors. Lists and factors won’t work.</li>
+<li><code>hutils::coalesce</code> short-circuits on its first argument; if there are no <code>NA</code>s in <code>x</code> then <code>x</code> is returned, even if the other vectors are the wrong length or type.</li>
+</ol>
+<p>In addition, <code>hutils::if_else</code> is generally faster than <code>dplyr::if_else</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_check &lt;-<span class="st"> </span><span class="cf">function</span>(values) {
+  <span class="kw">all</span>(<span class="kw">vapply</span>(values[<span class="op">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="kw">identical</span>(values[[<span class="dv">1</span>]], x), <span class="kw">logical</span>(<span class="dv">1</span>)))
+}
+
+
+cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),
+               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),
+               <span class="dt">check =</span> my_check) <span class="op">%T&gt;%</span>
+<span class="st">  </span>print <span class="op">%&gt;%</span>
+<span class="st">  </span>autoplot</code></pre></div>
+<pre><code>## Unit: milliseconds
+##    expr      min       lq      mean   median        uq      max neval
+##   dplyr 6.598484 8.017027 10.419082 8.782920 10.618142 74.85812   100
+##  hutils 3.629482 3.768024  5.899155 4.530152  7.222071 39.73457   100</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),
+               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),
+               <span class="dt">check =</span> my_check) <span class="op">%T&gt;%</span>
+<span class="st">  </span>print <span class="op">%&gt;%</span>
+<span class="st">  </span>autoplot</code></pre></div>
+<pre><code>## Unit: milliseconds
+##    expr      min       lq     mean   median       uq       max neval
+##   dplyr 4.616138 4.705588 6.495623 5.383236 7.199332 61.978287   100
+##  hutils 1.879645 1.919099 2.308569 1.957951 2.341048  6.712329   100</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>This speed advantage also appears to be true of <code>coalesce</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+B &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+C &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">check =</span> my_check) <span class="op">%T&gt;%</span>
+<span class="st">  </span>print <span class="op">%&gt;%</span>
+<span class="st">  </span>autoplot</code></pre></div>
+<pre><code>## Unit: milliseconds
+##    expr      min       lq     mean   median       uq       max neval
+##   dplyr 2.456399 2.686648 3.836623 3.366255 3.530245 14.194768   100
+##  hutils 1.280605 1.373216 2.013082 1.607532 1.659937  5.623876   100</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>especially during short-circuits:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">check =</span> my_check) <span class="op">%T&gt;%</span>
+<span class="st">  </span>print <span class="op">%&gt;%</span>
+<span class="st">  </span>autoplot</code></pre></div>
+<pre><code>## Unit: microseconds
+##    expr      min       lq      mean    median        uq      max neval
+##   dplyr 2243.466 2364.239 3600.4673 2987.6750 4992.1570 7991.729   100
+##  hutils  161.129  164.744  173.1257  170.0145  177.9955  212.631   100</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+<span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),
+               <span class="dt">check =</span> my_check) <span class="op">%T&gt;%</span>
+<span class="st">  </span>print <span class="op">%&gt;%</span>
+<span class="st">  </span>autoplot</code></pre></div>
+<pre><code>## Unit: microseconds
+##    expr      min        lq     mean   median        uq       max neval
+##   dplyr 2451.882 2698.3945 4466.766 3388.842 5639.8385 64588.888   100
+##  hutils  766.797  810.3165 1032.633  938.467  997.1965  4257.437   100</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="drop-columns" class="section level2">
+<h2>Drop columns</h2>
+<p>To drop a column from a <code>data.table</code>, you set it to <code>NULL</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+DT[, A <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]</code></pre></div>
+<p>There’s nothing wrong with this, but I’ve found the following a useful alias, especially in a <code>magrittr</code> pipe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+DT <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;A&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;B&quot;</span>)
+
+<span class="co"># or</span>
+DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)
+DT <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_cols</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</code></pre></div>
+<p>These functions simple invoke the canonical form, so won’t be any faster.</p>
+<p>Additionally, one can drop columns by a regular expression using <code>drop_colr</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(flights)
+
+flights <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;time&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;arr(?!_delay)&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>##         year month day dep_delay arr_delay flight tailnum origin dest
+##      1: 2013     1   1         2        11   1545  N14228    EWR  IAH
+##      2: 2013     1   1         4        20   1714  N24211    LGA  IAH
+##      3: 2013     1   1         2        33   1141  N619AA    JFK  MIA
+##      4: 2013     1   1        -1       -18    725  N804JB    JFK  BQN
+##      5: 2013     1   1        -6       -25    461  N668DN    LGA  ATL
+##     ---                                                              
+## 336772: 2013     9  30        NA        NA   3393      NA    JFK  DCA
+## 336773: 2013     9  30        NA        NA   3525      NA    LGA  SYR
+## 336774: 2013     9  30        NA        NA   3461  N535MQ    LGA  BNA
+## 336775: 2013     9  30        NA        NA   3572  N511MQ    LGA  CLE
+## 336776: 2013     9  30        NA        NA   3531  N839MQ    LGA  RDU
+##         distance hour minute
+##      1:     1400    5     15
+##      2:     1416    5     29
+##      3:     1089    5     40
+##      4:     1576    5     45
+##      5:      762    6      0
+##     ---                     
+## 336772:      213   14     55
+## 336773:      198   22      0
+## 336774:      764   12     10
+## 336775:      419   11     59
+## 336776:      431    8     40</code></pre>
+</div>
+<div id="drop_empty_cols" class="section level2">
+<h2><code>drop_empty_cols</code></h2>
+<p>This function drops columns in which all the values are <code>NA</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">planes <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)]</code></pre></div>
+<pre><code>##       tailnum year                    type                  manufacturer
+##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
+##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    3:  N103US 1999 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    4:  N104UW 1999 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    5:  N10575 2002 Fixed wing multi engine                       EMBRAER
+##   ---                                                                   
+## 3295:  N997AT 2002 Fixed wing multi engine                        BOEING
+## 3296:  N997DL 1992 Fixed wing multi engine MCDONNELL DOUGLAS AIRCRAFT CO
+## 3297:  N998AT 2002 Fixed wing multi engine                        BOEING
+## 3298:  N998DL 1992 Fixed wing multi engine MCDONNELL DOUGLAS CORPORATION
+## 3299:  N999DN 1992 Fixed wing multi engine MCDONNELL DOUGLAS CORPORATION
+##           model engines seats speed    engine
+##    1: EMB-145XR       2    55    NA Turbo-fan
+##    2:  A320-214       2   182    NA Turbo-fan
+##    3:  A320-214       2   182    NA Turbo-fan
+##    4:  A320-214       2   182    NA Turbo-fan
+##    5: EMB-145LR       2    55    NA Turbo-fan
+##   ---                                        
+## 3295:   717-200       2   100    NA Turbo-fan
+## 3296:     MD-88       2   142    NA Turbo-fan
+## 3297:   717-200       2   100    NA Turbo-fan
+## 3298:     MD-88       2   142    NA Turbo-jet
+## 3299:     MD-88       2   142    NA Turbo-jet</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">planes <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)] <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># drops speed</span>
+<span class="st">  </span>drop_empty_cols</code></pre></div>
+<pre><code>##       tailnum year                    type                  manufacturer
+##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
+##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    3:  N103US 1999 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    4:  N104UW 1999 Fixed wing multi engine              AIRBUS INDUSTRIE
+##    5:  N10575 2002 Fixed wing multi engine                       EMBRAER
+##   ---                                                                   
+## 3295:  N997AT 2002 Fixed wing multi engine                        BOEING
+## 3296:  N997DL 1992 Fixed wing multi engine MCDONNELL DOUGLAS AIRCRAFT CO
+## 3297:  N998AT 2002 Fixed wing multi engine                        BOEING
+## 3298:  N998DL 1992 Fixed wing multi engine MCDONNELL DOUGLAS CORPORATION
+## 3299:  N999DN 1992 Fixed wing multi engine MCDONNELL DOUGLAS CORPORATION
+##           model engines seats    engine
+##    1: EMB-145XR       2    55 Turbo-fan
+##    2:  A320-214       2   182 Turbo-fan
+##    3:  A320-214       2   182 Turbo-fan
+##    4:  A320-214       2   182 Turbo-fan
+##    5: EMB-145LR       2    55 Turbo-fan
+##   ---                                  
+## 3295:   717-200       2   100 Turbo-fan
+## 3296:     MD-88       2   142 Turbo-fan
+## 3297:   717-200       2   100 Turbo-fan
+## 3298:     MD-88       2   142 Turbo-jet
+## 3299:     MD-88       2   142 Turbo-jet</code></pre>
+</div>
+<div id="duplicated_rows" class="section level2">
+<h2><code>duplicated_rows</code></h2>
+<p>There are many useful functions for detecting duplicates in R. However, in interactive use, I often want to not merely see which values are duplicated, but also compare them to the original. This is especially true when I am comparing duplicates across a <em>subset</em> of columns in a a <code>data.table</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="co"># only the 'second' of the duplicates is returned</span>
+<span class="st">  </span>.[<span class="kw">duplicated</span>(., <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))]  </code></pre></div>
+<pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
+##      1: 2013     1   1      600            600         0      837
+##      2: 2013     1   1      607            607         0      858
+##      3: 2013     1   1      608            600         8      807
+##      4: 2013     1   1      623            627        -4      933
+##      5: 2013     1   1      624            630        -6      840
+##     ---                                                          
+## 336548: 2013     9  30       NA           1455        NA       NA
+## 336549: 2013     9  30       NA           2200        NA       NA
+## 336550: 2013     9  30       NA           1210        NA       NA
+## 336551: 2013     9  30       NA           1159        NA       NA
+## 336552: 2013     9  30       NA            840        NA       NA
+##         sched_arr_time arr_delay carrier flight tailnum origin dest
+##      1:            825        12      MQ   4650  N542MQ    LGA  ATL
+##      2:            915       -17      UA   1077  N53442    EWR  MIA
+##      3:            735        32      MQ   3768  N9EAMQ    EWR  ORD
+##      4:            932         1      UA    496  N459UA    LGA  IAH
+##      5:            830        10      MQ   4599  N518MQ    LGA  MSP
+##     ---                                                            
+## 336548:           1634        NA      9E   3393      NA    JFK  DCA
+## 336549:           2312        NA      9E   3525      NA    LGA  SYR
+## 336550:           1330        NA      MQ   3461  N535MQ    LGA  BNA
+## 336551:           1344        NA      MQ   3572  N511MQ    LGA  CLE
+## 336552:           1020        NA      MQ   3531  N839MQ    LGA  RDU
+##         air_time distance hour minute           time_hour
+##      1:      134      762    6      0 2013-01-01 06:00:00
+##      2:      157     1085    6      7 2013-01-01 06:00:00
+##      3:      139      719    6      0 2013-01-01 06:00:00
+##      4:      229     1416    6     27 2013-01-01 06:00:00
+##      5:      166     1020    6     30 2013-01-01 06:00:00
+##     ---                                                  
+## 336548:       NA      213   14     55 2013-09-30 14:00:00
+## 336549:       NA      198   22      0 2013-09-30 22:00:00
+## 336550:       NA      764   12     10 2013-09-30 12:00:00
+## 336551:       NA      419   11     59 2013-09-30 11:00:00
+## 336552:       NA      431    8     40 2013-09-30 08:00:00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="co"># Both rows are returned and (by default)</span>
+<span class="st">  </span><span class="co"># duplicates are presented adjacently</span>
+<span class="st">  </span><span class="kw">duplicated_rows</span>(<span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))</code></pre></div>
+<pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
+##      1: 2013     1   1     1315           1317        -2     1413
+##      2: 2013     1   1     1655           1621        34     1804
+##      3: 2013     1   1     2056           2004        52     2156
+##      4: 2013     1   2     1332           1327         5     1419
+##      5: 2013     1   2     1746           1621        85     1835
+##     ---                                                          
+## 336767: 2013     9  27     1516           1520        -4     1739
+## 336768: 2013     9  29     1754           1755        -1     2019
+## 336769: 2013     9  30      719            725        -6      916
+## 336770: 2013     9  30     1519           1520        -1     1726
+## 336771: 2013     9  30     1747           1755        -8     1941
+##         sched_arr_time arr_delay carrier flight tailnum origin dest
+##      1:           1423       -10      EV   4112  N13538    EWR  ALB
+##      2:           1724        40      EV   3260  N19554    EWR  ALB
+##      3:           2112        44      EV   4170  N12540    EWR  ALB
+##      4:           1433       -14      EV   4316  N14153    EWR  ALB
+##      5:           1724        71      EV   3260  N14153    EWR  ALB
+##     ---                                                            
+## 336767:           1740        -1      MQ   3532  N724MQ    LGA  XNA
+## 336768:           2015         4      MQ   3713  N725MQ    LGA  XNA
+## 336769:            945       -29      MQ   3547  N735MQ    LGA  XNA
+## 336770:           1740       -14      MQ   3532  N725MQ    LGA  XNA
+## 336771:           2015       -34      MQ   3713  N720MQ    LGA  XNA
+##         air_time distance hour minute           time_hour
+##      1:       33      143   13     17 2013-01-01 13:00:00
+##      2:       36      143   16     21 2013-01-01 16:00:00
+##      3:       31      143   20      4 2013-01-01 20:00:00
+##      4:       33      143   13     27 2013-01-02 13:00:00
+##      5:       31      143   16     21 2013-01-02 16:00:00
+##     ---                                                  
+## 336767:      160     1147   15     20 2013-09-27 15:00:00
+## 336768:      160     1147   17     55 2013-09-29 17:00:00
+## 336769:      150     1147    7     25 2013-09-30 07:00:00
+## 336770:      148     1147   15     20 2013-09-30 15:00:00
+## 336771:      146     1147   17     55 2013-09-30 17:00:00</code></pre>
+</div>
+<div id="haversine-distance" class="section level2">
+<h2>Haversine distance</h2>
+<p>To emphasize the miscellany of this package, I now present <code>haversine_distance</code> which simply returns the distance between two points on the Earth, given their latitutde and longitude.</p>
+<p>I prefer this to other packages’ implementations. Although the <code>geosphere</code> package can do a lot more than calculate distances between points, I find the interface for <code>distHaversine</code> unfortunate as it cannot be easily used inside a <code>data.frame</code>. In addition, I’ve found the arguments clearer in <code>hutils::haversine_distance</code> rather than trying to remember whether to use <code>byrow</code> inside the <code>matrix</code> function while passing to <code>distHaversine</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DT1 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">lat_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="op">-</span><span class="dv">80</span>, <span class="dv">80</span>),
+                  <span class="dt">lon_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="op">-</span><span class="dv">179</span>, <span class="dv">179</span>),
+                  <span class="dt">lat_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="op">-</span><span class="dv">80</span>, <span class="dv">80</span>),
+                  <span class="dt">lon_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="op">-</span><span class="dv">179</span>, <span class="dv">179</span>))
+
+DT2 &lt;-<span class="st"> </span><span class="kw">copy</span>(DT1)
+
+<span class="kw">microbenchmark</span>(DT1[, distance <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">haversine_distance</span>(lat_orig, lon_orig,
+                                                    lat_dest, lon_dest)],
+               
+               DT2[, distance <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">distHaversine</span>(<span class="kw">cbind</span>(lon_orig, lat_orig),
+                                               <span class="kw">cbind</span>(lon_orig, lat_orig))])</code></pre></div>
+<pre><code>## Unit: milliseconds
+##                                                                                             expr
+##           DT1[, `:=`(distance, haversine_distance(lat_orig, lon_orig, lat_dest,      lon_dest))]
+##  DT2[, `:=`(distance, distHaversine(cbind(lon_orig, lat_orig),      cbind(lon_orig, lat_orig)))]
+##       min       lq     mean   median       uq      max neval
+##  18.57599 18.98935 19.94903 19.06239 19.20695  33.4722   100
+##  45.43946 46.35925 53.35370 52.05270 57.25839 122.0170   100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(DT1, DT2)</code></pre></div>
+</div>
+<div id="mutate_other" class="section level2">
+<h2><code>mutate_other</code></h2>
+<p>There may be occasions where a categorical variable in a <code>data.table</code> may need to modified to reduce the number of distinct categories. For example, you may want to plot a chart with a set number of facets, or ensure the smooth operation of <code>randomForest</code>, which accepts no more than 32 levels in a feature.</p>
+<p><code>mutate_other</code> keeps the <em>n</em> most common categories and changes the other categories to <code>Other</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
+DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">Fruit =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;eggplant&quot;</span>),
+                                <span class="dt">size =</span> <span class="dv">20</span>,
+                                <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.45</span>, <span class="fl">0.25</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),
+                                <span class="dt">replace =</span> <span class="ot">TRUE</span>),
+                 <span class="dt">Price =</span> <span class="kw">rpois</span>(<span class="dv">20</span>, <span class="dv">10</span>))
+
+<span class="kw">kable</span>(<span class="kw">mutate_other</span>(DT, <span class="st">&quot;Fruit&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>)[])</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Fruit</th>
+<th align="right">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">apple</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">apple</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">pear</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">apple</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">Other</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">pear</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">pear</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">apple</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">apple</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">apple</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">pear</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">apple</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">Other</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">pear</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">Other</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">apple</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ngrep" class="section level2">
+<h2><code>ngrep</code></h2>
+<p>This is a ‘dumb’ negation of <code>grep</code>. In recent versions of R, the option <code>invert = FALSE</code> exists. A slight advantage of <code>ngrep</code> is that it’s shorter to type. But if you don’t have arthritis, best use <code>invert = FALSE</code> or <code>!grepl</code>.</p>
+</div>
+<div id="notin-ein-enotin-pin" class="section level2">
+<h2><code>notin</code> <code>ein</code> <code>enotin</code> <code>pin</code></h2>
+<p>These functions provide complementary functionality to <code>%in%</code>:</p>
+<div id="notin" class="section level3">
+<h3><code>%notin%</code></h3>
+<p><code>%notin%</code> is the negation of <code>%in%</code>, but also uses the package <code>fastmatch</code> to increase the speed of the operation</p>
+</div>
+<div id="ein-and-enotin" class="section level3">
+<h3><code>%ein%</code> and <code>%enotin%</code></h3>
+<p>The functions <code>%ein%</code> and <code>%enotin%</code> are motivated by a different sort of problem. Consider the following statement:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)
+iris[Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span>
+<span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</code></pre></div>
+<pre><code>## [1] 1.470188</code></pre>
+<p>On the face of it, this appears to give the average ratio of <em>Iris setosa</em> and <em>Iris versicolour</em> irises. However, it only gives the average ratio of <em>setosa</em> irises, as the correct spelling is <em>Iris versicolor</em> not <em>-our</em>. This particular error is easy to make, (in fact when I wrote this vignette, the first hit of Google for <code>iris dataset</code> made the same spelling error), but it’s easy to imagine similar mistakes, such as mistaking the capitalization of a value. The functions <code>%ein%</code> and <code>%enotin%</code> strive to reduce the occurence of this mistake. The functions operate exactly the same as <code>%in%</code> and <code>%enotin%</code> but error if any of the table of values to be matched against is not present in any of the values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)
+iris[Species <span class="op">%ein%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span>
+<span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</code></pre></div>
+<pre><code>## Error in Species %ein% c(&quot;setosa&quot;, &quot;versicolour&quot;): Not all y are in x, so stopping, as requested. First absent y: versicolour</code></pre>
+<p>The <code>e</code> stands for ‘exists’; <em>i.e.</em> they should be read as “exists and in” and “exists and not in”.</p>
+</div>
+<div id="pin" class="section level3">
+<h3><code>%pin%</code></h3>
+<p>This performs a partial match (<em>i.e</em> <code>grepl</code>) but with a possibly more readable or intuitive syntax</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">identical</span>(iris[<span class="kw">grep</span>(<span class="st">&quot;v&quot;</span>, Species)],
+          iris[Species <span class="op">%pin%</span><span class="st"> &quot;v&quot;</span>])</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>If the RHS has more than one element, the matching is done on alternation (<em>i.e.</em> OR):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris[Species <span class="op">%pin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ver&quot;</span>, <span class="st">&quot;vir&quot;</span>)] <span class="op">%&gt;%</span>
+<span class="st">  </span>head</code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 1:          7.0         3.2          4.7         1.4 versicolor
+## 2:          6.4         3.2          4.5         1.5 versicolor
+## 3:          6.9         3.1          4.9         1.5 versicolor
+## 4:          5.5         2.3          4.0         1.3 versicolor
+## 5:          6.5         2.8          4.6         1.5 versicolor
+## 6:          5.7         2.8          4.5         1.3 versicolor</code></pre>
+<p>There is an important qualification: if the RHS is <code>NULL</code>, then the result will be <code>TRUE</code> along the length of <code>x</code>, contrary to the behaviour of <code>%in%</code>. This is not entirely unexpected as <code>NULL</code> could legitimately be interpreted as <span class="math inline">\(\varepsilon\)</span>, the empty regular expression, which occurs in every string.</p>
+</div>
+<div id="provide.dir" class="section level3">
+<h3><code>provide.dir</code></h3>
+<p>This is the same as <code>dir.create</code> but checks whether the target exists or not and does nothing if it does. Motivated by <code>\providecommand</code> in , which creates a macro only if it does not exist already.</p>
+</div>
+<div id="select_which" class="section level3">
+<h3><code>select_which</code></h3>
+<p>This provides a similar role to <code>dplyr::select_if</code> but was originally part of <code>package:grattan</code> so has a different name. It simply returns the columns whose <em>values</em> return <code>TRUE</code> when <code>Which</code> is applied. Additional columns (which may or not may satisfy <code>Which</code>) may be incldued bny using <code>.and.dots</code>. (To remove columns, you can use <code>drop_col</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data.table)
+DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,
+                 <span class="dt">y =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],
+                 <span class="dt">AB =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))
+<span class="kw">select_which</span>(DT, anyNA, <span class="dt">.and.dots =</span> <span class="st">&quot;y&quot;</span>)</code></pre></div>
+</div>
+<div id="set_cols_first" class="section level3">
+<h3><code>set_cols_first</code></h3>
+<p>Up to and including <code>data.table 1.10.4</code>, one could only reorder the columns by supplying all the columns. You can use <code>set_cols_first</code> and <code>set_cols_last</code> to put columns first or last without supplying all the columns.</p>
+</div>
+<div id="unique-keys" class="section level3">
+<h3>Unique keys</h3>
+<p>In some circumstances, you need to know that the <code>key</code> of a <code>data.table</code> is unique. For example, you may expect a join to be performed later, without specifying <code>mult='first'</code> or permitting Cartesian joins. <code>data.table</code> does not require a <code>key</code> to be unique and does not supply tools to check the uniqueness of keys. <code>hutils</code> supplies two simple functions: <code>has_unique_key</code> which when applied to a <code>data.table</code> returns <code>TRUE</code> if and only if the table has a key and it is unique.</p>
+<p><code>set_unique_key</code> does the same as <code>setkey</code> but will error if the resultant key is not unique.</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
