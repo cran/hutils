@@ -29,5 +29,22 @@ test_that("Logicals", {
   expect_identical(nor(xx, yy), c(FALSE, FALSE, FALSE, TRUE))
   expect_identical(neither(xx, yy), nor(xx, yy))
   
+  expect_identical(xx %implies% yy, implies(xx, yy))
+  expect_identical(xx %implies% yy, c(TRUE, FALSE, TRUE, TRUE))
+  expect_error(xx %implies% yy[-1], regexp = "must be the same length")
   
+  
+})
+
+
+test_that("Implies", {
+  expect_identical(c(NA, NA, NA,
+                     FALSE, FALSE, FALSE,
+                     TRUE, TRUE, TRUE) %implies%
+                     c(NA, FALSE, TRUE,
+                       NA, FALSE, TRUE,
+                       NA, FALSE, TRUE),
+                   c(NA, NA, TRUE,
+                     TRUE, TRUE, TRUE, 
+                     NA, FALSE, TRUE))
 })

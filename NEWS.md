@@ -1,4 +1,13 @@
 
+# hutils 0.10.0
+* New function `implies`, logical implies.
+* New function `drop_constant_cols`
+* New function `print_transpose_data_table` for glimpsing data tables by rows
+* New alias `pow` for exponentiation.
+* Bug fixes:
+    - Ensure `drop_empty_cols` retains non-empty columns when duplicate names are used.
+    - `coalesce` errors if there is `...` wrongly contains factors.
+
 # hutils 0.9.0
 * Changed `if_else` to reflect dplyr's formals so it can be a drop-in replacement.
 * Fix error for multi-length `missing` value in `if_else` when length-one `condition`.

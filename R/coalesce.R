@@ -56,17 +56,31 @@ coalesce <- function(x, ...) {
     lengths <- c(lx, vapply(values, length, FUN.VALUE = 0L))
     lengthsn1 <- lengths != 1L
     if (any(lengthsn1 & lengths != lx)) {
-      which_wrong_length <- which(lengthsn1 & lengths != lx)
-      stop("Argument ", which_wrong_length[1], " had length ", lengths[which_wrong_length[1]], ". ", 
-           "The only permissible vector lengths in ... are 1 or the length of `x` (", lx, ").")
+      wrong_len_i <- which(lengthsn1 & lengths != lx)
+      stop("Argument ", wrong_len_i[1], " had length ", lengths[wrong_len_i[1]], ", ",
+           "but length(x) = ", lx, ". ",
+           "The only permissible lengths in ... are 1 or the length of `x` (", lx, ").")
     }
     
+    typeof_x <- typeof(x)
     lv <- length(values)
     
     i <- 1L
     while (i == 1L ||  # already checked the conditions
            i <= lv && anyNA(x)) {
       vi <- values[[i]]
+      if (typeof(vi) != typeof_x) {
+        stop("Argument ", i + 1L, " had type '", typeof(vi), "' but ",
+             "typeof(x) was ", typeof_x, ". All types ",
+             "in `...` must be the same type.")
+      }
+      
+      if (inherits(vi, what = "factor") && 
+          !inherits(x, what = "factor")) {
+        stop("Argument ", i + 1L, " was a factor, but `x` was not. ",
+             "All `...` must be the same type.")
+      }
+      
       nax <- is.na(x)
       if (lengthsn1[i + 1L]) {
         x[nax] <- vi[nax]
