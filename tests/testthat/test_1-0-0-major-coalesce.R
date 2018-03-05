@@ -1,3 +1,5 @@
+context("test-1-0-0-major-coalesce.R")
+
 # dplyr coalesce
 # https://github.com/tidyverse/dplyr/blob/master/tests/testthat/test-coalesce.R
 # The MIT License (MIT)
@@ -26,7 +28,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-context("coalesce")
+test_that("coalesce replaces 'easy' types", {
+  x <- c(NA, 1:5)
+  xL <- as.logical(x)
+  expect_identical(coalesce(xL, TRUE), rep_len(TRUE, 6L))
+  expect_identical(coalesce(x, 0L), 0:5)
+  expect_identical(coalesce(as.double(x), 1.5), c(1.5, 1:5))
+  expect_identical(coalesce(as.double(x), 1.5), c(1.5, 1:5))
+  
+})
 
 test_that("non-missing scalar replaces all missing values", {
   x <- c(NA, 1)
@@ -38,15 +48,11 @@ test_that("finds non-missing values in multiple positions", {
   x2 <- c(NA, 2L, NA)
   x3 <- c(NA, NA, 3L)
   
-  expect_equal(coalesce(x1, x2, x3), 1:3)
+  expect_identical(coalesce(x1, x2, x3), 1:3)
 })
 
-test_that("error if invalid length", {
-  expect_error(
-    coalesce(c(NA_integer_, 2), 1:3),
-    "only permissible lengths in ...",
-    fixed = TRUE
-  )
+test_that("Type mismatch", {
+  expect_error(coalesce(c(NA, 1:5), as.character(1:6)))
 })
 
 test_that("Return x if nothing NA", {
@@ -59,8 +65,7 @@ test_that("Type mismatch", {
   expect_error(coalesce(c(NA, 1:5), as.character(1:6)))
 })
 
-test_that("Factor mismatch", {
-  expect_error(coalesce(c(NA, 1:5), factor(1:6)), 
-               regexp = "Argument 2 was a factor, but `x` was not.", 
-               fixed = TRUE)
-})
+
+
+
+
