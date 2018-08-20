@@ -27,23 +27,18 @@ if_else <- function(condition, true, false, missing = NULL) {
   max.length <- length(condition)
   lengths <- c(max.length, length(yes), length(no), if (na_not_used) 1L else length(na))
   if (any(lengths != 1L & lengths != max.length)) {
-    faulty_input <- 
-      switch(which(lengths != 1L & lengths != max.length)[1L],
-             # max.length != max.length
-             stop("Internal error. hutils::if_else:40"),
-             #
-             "true",
-             "false",
-             "missing")
-    
-    error_condition <-
-      sprintf("`%s` had length %d but `condition` had length %d. ",
-              faulty_input,
-              lengths[which(lengths != 1L & lengths != max.length)[1L]],
-              max.length)
-    
-    stop(error_condition, 
-         "The only permitted lengths in if_else() are 1 or the maximum length.")
+    if (length(yes) != 1L && length(yes) != max.length) {
+      stop("`true` had length ", length(yes), " but `condition` had length ", length(condition), ". ", 
+           "`true` must have the same length as `condition`, or length one.")
+    }
+    if (length(no) != 1L && length(no) != max.length) {
+      stop("`false` had length ", length(no), " but `condition` had length ", length(condition), ". ", 
+           "`false` must have the same length as `condition`, or length one.")
+    }
+    if (!na_not_used && length(missing) != 1L && length(missing) != max.length) {
+      stop("`missing` had length ", length(missing), " but `condition` had length ", length(condition), ". ", 
+           "`missing`, if not NULL, must have the same length as `condition`, or length one.")
+    }
   }
   
   if (!is.logical(condition)) {
@@ -108,10 +103,10 @@ if_else <- function(condition, true, false, missing = NULL) {
   } else {
     # N 1 ? ?
     if (anyNA(condition)) {
-      Yes <- which(condition)
+      
       
       if (lengths[2] == 1L) {
-        out[Yes] <- yes
+        out[which(condition)] <- yes
         if (na_not_used) {
           out[is.na(condition)] <- NA_Type_
         } else {
@@ -124,6 +119,7 @@ if_else <- function(condition, true, false, missing = NULL) {
         
       } else {
         # N N ? ?
+        Yes <- which(condition)
         out[Yes] <- yes[Yes]
         
         if (na_not_used) {

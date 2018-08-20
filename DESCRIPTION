@@ -1,8 +1,8 @@
 Package: hutils
 Type: Package
 Title: Miscellaneous R Functions and Aliases
-Version: 1.1.0
-Date: 2018-05-13
+Version: 1.2.0
+Date: 2018-08-20
 Authors@R: c(person("Hugh", "Parsonage", role = c("aut", "cre"), email = "hugh.parsonage@gmail.com"),
              person("Michael", "Frasco", role = "ctb"),
              person("Ben", "Hamner", role = "ctb"))
@@ -16,12 +16,12 @@ Imports: data.table (< 2.0.0), magrittr (< 2.0.0), stats (< 4.0.0),
         utils (< 4.0.0), fastmatch (< 2.0.0), grDevices (< 4.0.0)
 Suggests: testthat, datasets, dplyr, microbenchmark, knitr, rmarkdown,
         nycflights13, geosphere, ggplot2
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-05-12 14:35:52 UTC; hughp
+Packaged: 2018-08-20 02:34:22 UTC; hughp
 Author: Hugh Parsonage [aut, cre],
   Michael Frasco [ctb],
   Ben Hamner [ctb]
 Repository: CRAN
-Date/Publication: 2018-05-12 14:58:06 UTC
+Date/Publication: 2018-08-20 04:50:08 UTC
