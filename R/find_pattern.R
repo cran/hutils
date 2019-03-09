@@ -13,9 +13,12 @@
 #' be interpreted as a \code{perl} regex? 
 #' @param file_contents_fixed (logical, default: \code{FALSE}) Should \code{file_contents} 
 #' be interpreted as a \code{fixed} regex?
+#' @param file_contents_ignore_case (logical, default: \code{FALSE}) As in \code{\link[base]{grep}}.
 #' @param file.ext A file extension passed to the operating system if \code{use.OS} is used.
 #' @param which_lines One of \code{"first"} and \code{"all"}. If \code{"first"} only the first match in any file is returned in the result; if \code{"all"}, all matches are.
 #' @return A \code{data.table}, showing the matches per file.
+#' @details For convenience, if \code{file_contents} appears to be a directory
+#' and \code{basedir} does not, the arguments are swapped, but with a warning.
 #' @export
 
 find_pattern_in <- function(file_contents,
@@ -28,8 +31,24 @@ find_pattern_in <- function(file_contents,
                             file_pattern = "\\.(R|r)(nw|md)?$",
                             file_contents_perl = TRUE,
                             file_contents_fixed = FALSE,
+                            file_contents_ignore_case = FALSE,
                             file.ext = NULL, 
                             which_lines = c("first", "all")) {
+  # Harmonize perl,fixed,ignore_case
+  if (file_contents_fixed && missing(file_contents_perl)) {
+    file_contents_perl <- FALSE
+  }
+  
+  # Invert arguments if likely
+  if (!dir.exists(basedir) && dir.exists(file_contents)) {
+    warning("`basedir = ", basedir, "` and `file_contents = ", file_contents, "`. ",
+            "Since `basedir` is not a directory but `file_contents` is a directory, ",
+            "interpreting as the arguments reversed. ",
+            "Do not rely on this behaviour as it may change without notice.")
+    file_contents %<->% basedir
+  }
+
+  
   ..reader <- match.fun(reader)
   .reader <- function(x) {
     out <- ..reader(x)
@@ -109,12 +128,14 @@ find_pattern_in <- function(file_contents,
              grep(.pattern,
                   x = x,
                   perl = file_contents_perl,
+                  ignore.case = file_contents_ignore_case,
                   fixed = file_contents_fixed)[1L]
            }, 
            "all" = {
              grep(.pattern,
                   x = x,
                   perl = file_contents_perl,
+                  ignore.case = file_contents_ignore_case,
                   fixed = file_contents_fixed)
            })
   }
@@ -126,6 +147,7 @@ find_pattern_in <- function(file_contents,
                   x = x,
                   value = TRUE,
                   perl = file_contents_perl,
+                  ignore.case = file_contents_ignore_case,
                   fixed = file_contents_fixed)[1L]
            }, 
            "all" = {
@@ -133,6 +155,7 @@ find_pattern_in <- function(file_contents,
                   x = x,
                   value = TRUE,
                   perl = file_contents_perl,
+                  ignore.case = file_contents_ignore_case,
                   fixed = file_contents_fixed)
            })
   }
@@ -167,3 +190,7 @@ deprecate_windows_finder <- function() {
                 "windows")) .Deprecated("hutilsInteractive::find_pattern_in_windows")
 }
 #nocov end
+
+
+
+

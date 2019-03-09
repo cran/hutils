@@ -281,3 +281,22 @@ flights %>%
 trim_common_affixes(c("CurrentHousingCosts(weekly)",
                       "CurrentFuelCosts(weekly)"))
 
+## ----swap----------------------------------------------------------------
+a <- 1
+b <- 2
+a %<->% b
+identical(c(a, b), c(2, 1))
+
+## ----average-bearing-----------------------------------------------------
+average_bearing(0, 270)  # NW
+mean(c(0, 270))          # SE (i.e. wrong)
+
+## ----Mode-eg-------------------------------------------------------------
+Mode(c(1, 1, 1, 2, 3))
+
+## ----samp-eg-------------------------------------------------------------
+DT <- data.table(x = c(5, 2, 3),
+                 y = c(5, 3, 4))
+DT[, .(Base = sample(.BY[["x"]]:.BY[["y"]])), keyby = .(x, y)]
+DT[, .(Base = samp(.BY[["x"]]:.BY[["y"]])), keyby = .(x, y)]
+
