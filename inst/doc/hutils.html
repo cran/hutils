@@ -12,7 +12,7 @@
 
 <meta name="author" content="Hugh Parsonage" />
 
-<meta name="date" content="2019-03-10" />
+<meta name="date" content="2019-05-31" />
 
 <title>Hutils</title>
 
@@ -291,6 +291,9 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
+
+
+
 </head>
 
 <body>
@@ -299,8 +302,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">Hutils</h1>
-<h4 class="author"><em>Hugh Parsonage</em></h4>
-<h4 class="date"><em>2019-03-10</em></h4>
+<h4 class="author">Hugh Parsonage</h4>
+<h4 class="date">2019-05-31</h4>
 
 
 
@@ -311,30 +314,35 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(knitr)</a>
 <a class="sourceLine" id="cb1-2" title="2">suggested_packages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;nycflights13&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;microbenchmark&quot;</span>)</a>
 <a class="sourceLine" id="cb1-3" title="3">opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="kw">all</span>(<span class="kw">vapply</span>(suggested_packages, requireNamespace, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">FUN.VALUE =</span> <span class="ot">FALSE</span>)))</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">tryCatch</span>({</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">library</span>(geosphere)</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="kw">library</span>(nycflights13)</a>
-<a class="sourceLine" id="cb2-4" title="4">  <span class="kw">library</span>(dplyr, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb2-6" title="6">  <span class="kw">library</span>(microbenchmark)</a>
-<a class="sourceLine" id="cb2-7" title="7">  <span class="kw">library</span>(data.table, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-8" title="8">  <span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb2-9" title="9">  <span class="kw">library</span>(hutils, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-10" title="10">}, </a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co"># requireNamespace does not detect errors like</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co"># package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="dt">error =</span> <span class="cf">function</span>(e) {</a>
-<a class="sourceLine" id="cb2-14" title="14">  opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-15" title="15">})</a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>)</a></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">tryCatch</span>({</a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">library</span>(geosphere)</a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="kw">library</span>(nycflights13)</a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="kw">library</span>(dplyr, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="kw">library</span>(microbenchmark)</a>
+<a class="sourceLine" id="cb3-7" title="7">  <span class="kw">library</span>(data.table, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="kw">library</span>(hutils, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb3-10" title="10">}, </a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co"># requireNamespace does not detect errors like</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co"># package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="dt">error =</span> <span class="cf">function</span>(e) {</a>
+<a class="sourceLine" id="cb3-14" title="14">  opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb3-15" title="15">})</a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>)</a></code></pre></div>
 <div id="aliases" class="section level2">
 <h2>Aliases</h2>
 <p>These are simple additions to <code>magrittr</code>‘s aliases, including: capitalized forms of <code>and</code> and <code>or</code> that invoke <code>&amp;&amp;</code> and <code>||</code> (the ’long-form’ logical operators) and <code>nor</code> / <code>neither</code> functions.</p>
 <p>The main motivation is to make the source code easier to indent. I occasionally find such source code easier to use.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">OR</span>(<span class="kw">OR</span>(<span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb3-2" title="2">      <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)),  <span class="co">## short-circuits</span></a>
-<a class="sourceLine" id="cb3-3" title="3">   <span class="kw">AND</span>(<span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb3-4" title="4">       <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)))  </a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">OR</span>(<span class="kw">OR</span>(<span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb4-2" title="2">      <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)),  <span class="co">## short-circuits</span></a>
+<a class="sourceLine" id="cb4-3" title="3">   <span class="kw">AND</span>(<span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-4" title="4">       <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)))  </a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><code>nor</code> (or <code>neither</code> which is identical) returns <code>TRUE</code> if and only if both arguments are <code>FALSE</code>.</p>
 </div>
@@ -347,94 +355,94 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><code>hutils::coalesce</code> short-circuits on its first argument; if there are no <code>NA</code>s in <code>x</code> then <code>x</code> is returned, even if the other vectors are the wrong length or type.</li>
 </ol>
 <p>In addition, <code>hutils::if_else</code> is generally faster than <code>dplyr::if_else</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">my_check &lt;-<span class="st"> </span><span class="cf">function</span>(values) {</a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="kw">all</span>(<span class="kw">vapply</span>(values[<span class="op">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="kw">identical</span>(values[[<span class="dv">1</span>]], x), <span class="kw">logical</span>(<span class="dv">1</span>)))</a>
-<a class="sourceLine" id="cb5-3" title="3">}</a>
-<a class="sourceLine" id="cb5-4" title="4"></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="kw">set.seed</span>(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb5-6" title="6">cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-7" title="7">yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-8" title="8">no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-9" title="9">na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-10" title="10"></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
-<a class="sourceLine" id="cb5-12" title="12">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
-<a class="sourceLine" id="cb5-13" title="13">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="st">  </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">my_check &lt;-<span class="st"> </span><span class="cf">function</span>(values) {</a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="kw">all</span>(<span class="kw">vapply</span>(values[<span class="op">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="kw">identical</span>(values[[<span class="dv">1</span>]], x), <span class="kw">logical</span>(<span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb6-3" title="3">}</a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">set.seed</span>(<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb6-6" title="6">cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-7" title="7">yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-8" title="8">no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-9" title="9">na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-10" title="10"></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
+<a class="sourceLine" id="cb6-12" title="12">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
+<a class="sourceLine" id="cb6-13" title="13">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="st">  </span>print</a></code></pre></div>
 <pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median    uq   max neval cld
-##   dplyr 5.144 5.358 7.864  7.151 8.948 17.08   100   b
-##  hutils 1.815 1.928 2.627  2.121 2.503 10.59   100  a</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-2" title="2">yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3">no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-4" title="4">na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
-<a class="sourceLine" id="cb7-7" title="7">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
-<a class="sourceLine" id="cb7-8" title="8">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="st">  </span>print</a></code></pre></div>
+##    expr   min    lq  mean median     uq   max neval
+##   dplyr 7.794 8.223 9.915  9.682 10.115 16.47   100
+##  hutils 2.646 2.774 4.320  3.077  3.373 55.12   100</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3">no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4">na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5"></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
+<a class="sourceLine" id="cb8-7" title="7">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</a>
+<a class="sourceLine" id="cb8-8" title="8">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="st">  </span>print</a></code></pre></div>
 <pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median     uq   max neval cld
-##   dplyr 5.392 5.715 8.248  5.912 11.511 16.10   100   b
-##  hutils 1.237 1.416 2.219  1.459  1.516 10.52   100  a</code></pre>
+##    expr   min    lq  mean median    uq    max neval
+##   dplyr 6.654 6.935 8.500  7.437 8.349 61.639   100
+##  hutils 1.704 1.832 2.139  1.911 2.102  6.662   100</code></pre>
 <p>This speed advantage also appears to be true of <code>coalesce</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-2" title="2">A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-3" title="3">B &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-4" title="4">C &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-5" title="5"></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb9-7" title="7">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb9-8" title="8">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="st">  </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2">A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb10-3" title="3">B &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb10-4" title="4">C &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb10-5" title="5"></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb10-7" title="7">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb10-8" title="8">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="st">  </span>print</a></code></pre></div>
 <pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median    uq     max neval cld
-##   dplyr 2.797 2.911 6.222  2.986 7.886 131.687   100   b
-##  hutils 1.284 1.369 2.681  1.429 1.498   8.441   100  a</code></pre>
+##    expr   min    lq  mean median    uq    max neval
+##   dplyr 2.529 2.675 3.747  2.757 3.282 55.401   100
+##  hutils 1.115 1.175 1.564  1.243 1.547  4.729   100</code></pre>
 <p>especially during short-circuits:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb11-2" title="2"></a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb11-4" title="4">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb11-5" title="5">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="st">  </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb12-4" title="4">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb12-5" title="5">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="st">  </span>print</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min     lq    mean  median     uq      max neval cld
-##   dplyr 2438.8 2715.8 6166.46 2772.95 8498.7 124873.0   100   b
-##  hutils   56.4   61.3   74.94   68.35   87.9    113.7   100  a</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb13-2" title="2">A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb13-3" title="3"></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb13-5" title="5">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
-<a class="sourceLine" id="cb13-6" title="6">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="st">  </span>print</a></code></pre></div>
+##    expr     min      lq    mean  median      uq    max neval
+##   dplyr 2262.36 2302.56 2723.59 2397.73 2755.85 5321.4   100
+##  hutils   65.22   67.69   90.21   83.07   99.48  238.7   100</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2">A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3"></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb14-5" title="5">               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</a>
+<a class="sourceLine" id="cb14-6" title="6">               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="st">  </span>print</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min   lq mean median   uq    max neval cld
-##   dplyr 2594.7 2901 6003 2954.8 7864 127835   100   b
-##  hutils  764.1  814 1583  855.3  891   9127   100  a</code></pre>
+##    expr    min     lq mean median     uq   max neval
+##   dplyr 2395.3 2496.4 3013 2594.8 3063.3  6258   100
+##  hutils  629.3  735.9 1420  797.1  891.6 54125   100</code></pre>
 </div>
 <div id="drop-columns" class="section level2">
 <h2>Drop columns</h2>
 <p>To drop a column from a <code>data.table</code>, you set it to <code>NULL</code></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb15-2" title="2">DT[, A <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]</a></code></pre></div>
-<p>There’s nothing wrong with this, but I’ve found the following a useful alias, especially in a <code>magrittr</code> pipe.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb16-2" title="2">DT <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;A&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;B&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb16-2" title="2">DT[, A <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]</a></code></pre></div>
+<p>There’s nothing wrong with this, but I’ve found the following a useful alias, especially in a <code>magrittr</code> pipe.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb17-2" title="2">DT <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;A&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;B&quot;</span>)</a></code></pre></div>
 <pre><code>##    C
 ## 1: 1
 ## 2: 2
 ## 3: 3
 ## 4: 4
 ## 5: 5</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb18-2" title="2">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb18-3" title="3">DT <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="st">  </span><span class="kw">drop_cols</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co"># or</span></a>
+<a class="sourceLine" id="cb19-2" title="2">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb19-3" title="3">DT <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="st">  </span><span class="kw">drop_cols</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</a></code></pre></div>
 <pre><code>##    C
 ## 1: 1
 ## 2: 2
@@ -443,11 +451,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 5: 5</code></pre>
 <p>These functions simple invoke the canonical form, so won’t be any faster.</p>
 <p>Additionally, one can drop columns by a regular expression using <code>drop_colr</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">flights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(flights)</a>
-<a class="sourceLine" id="cb20-2" title="2"></a>
-<a class="sourceLine" id="cb20-3" title="3">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;time&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-5" title="5"><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;arr(?!_delay)&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">flights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(flights)</a>
+<a class="sourceLine" id="cb21-2" title="2"></a>
+<a class="sourceLine" id="cb21-3" title="3">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;time&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;arr(?!_delay)&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##         year month day dep_delay arr_delay flight tailnum origin dest
 ##      1: 2013     1   1         2        11   1545  N14228    EWR  IAH
 ##      2: 2013     1   1         4        20   1714  N24211    LGA  IAH
@@ -476,9 +484,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="drop_constant_cols" class="section level2">
 <h2><code>drop_constant_cols</code></h2>
 <p>When a table is filtered, the filtrate is often redundant.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span>.[origin <span class="op">==</span><span class="st"> &quot;JFK&quot;</span>] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">  </span>drop_constant_cols</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span>.[origin <span class="op">==</span><span class="st"> &quot;JFK&quot;</span>] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span>drop_constant_cols</a></code></pre></div>
 <pre><code>##         month day dep_time sched_dep_time dep_delay arr_time
 ##      1:     1   1      542            540         2      923
 ##      2:     1   1      544            545        -1     1004
@@ -519,9 +527,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="drop_empty_cols" class="section level2">
 <h2><code>drop_empty_cols</code></h2>
 <p>This function drops columns in which all the values are <code>NA</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">planes <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)]</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">planes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)]</a></code></pre></div>
 <pre><code>##       tailnum year                    type                  manufacturer
 ##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
 ##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
@@ -546,11 +554,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 3297:   717-200       2   100    NA Turbo-fan
 ## 3298:     MD-88       2   142    NA Turbo-jet
 ## 3299:     MD-88       2   142    NA Turbo-jet</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">planes <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)] <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb26-4" title="4"><span class="st">  </span><span class="co"># drops speed</span></a>
-<a class="sourceLine" id="cb26-5" title="5"><span class="st">  </span>drop_empty_cols</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">planes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="st">  </span><span class="co"># drops speed</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="st">  </span>drop_empty_cols</a></code></pre></div>
 <pre><code>##       tailnum year                    type                  manufacturer
 ##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
 ##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
@@ -579,9 +587,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="duplicated_rows" class="section level2">
 <h2><code>duplicated_rows</code></h2>
 <p>There are many useful functions for detecting duplicates in R. However, in interactive use, I often want to not merely see which values are duplicated, but also compare them to the original. This is especially true when I am comparing duplicates across a <em>subset</em> of columns in a a <code>data.table</code>.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="co"># only the &#39;second&#39; of the duplicates is returned</span></a>
-<a class="sourceLine" id="cb28-3" title="3"><span class="st">  </span>.[<span class="kw">duplicated</span>(., <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))]  </a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="co"># only the &#39;second&#39; of the duplicates is returned</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span>.[<span class="kw">duplicated</span>(., <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))]  </a></code></pre></div>
 <pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
 ##      1: 2013     1   1      600            600         0      837
 ##      2: 2013     1   1      607            607         0      858
@@ -618,10 +626,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 336550:       NA      764   12     10 2013-09-30 12:00:00
 ## 336551:       NA      419   11     59 2013-09-30 11:00:00
 ## 336552:       NA      431    8     40 2013-09-30 08:00:00</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="co"># Both rows are returned and (by default)</span></a>
-<a class="sourceLine" id="cb30-3" title="3"><span class="st">  </span><span class="co"># duplicates are presented adjacently</span></a>
-<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">duplicated_rows</span>(<span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="co"># Both rows are returned and (by default)</span></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="co"># duplicates are presented adjacently</span></a>
+<a class="sourceLine" id="cb31-4" title="4"><span class="st">  </span><span class="kw">duplicated_rows</span>(<span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))</a></code></pre></div>
 <pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
 ##      1: 2013     1   1     1315           1317        -2     1413
 ##      2: 2013     1   1     1655           1621        34     1804
@@ -663,39 +671,39 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h2>Haversine distance</h2>
 <p>To emphasize the miscellany of this package, I now present <code>haversine_distance</code> which simply returns the distance between two points on the Earth, given their latitude and longitude.</p>
 <p>I prefer this to other packages’ implementations. Although the <code>geosphere</code> package can do a lot more than calculate distances between points, I find the interface for <code>distHaversine</code> unfortunate as it cannot be easily used inside a <code>data.frame</code>. In addition, I’ve found the arguments clearer in <code>hutils::haversine_distance</code> rather than trying to remember whether to use <code>byrow</code> inside the <code>matrix</code> function while passing to <code>distHaversine</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">DT1 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">lat_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</a>
-<a class="sourceLine" id="cb32-2" title="2">                  <span class="dt">lon_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>),</a>
-<a class="sourceLine" id="cb32-3" title="3">                  <span class="dt">lat_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</a>
-<a class="sourceLine" id="cb32-4" title="4">                  <span class="dt">lon_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>))</a>
-<a class="sourceLine" id="cb32-5" title="5"></a>
-<a class="sourceLine" id="cb32-6" title="6">DT2 &lt;-<span class="st"> </span><span class="kw">copy</span>(DT1)</a>
-<a class="sourceLine" id="cb32-7" title="7"></a>
-<a class="sourceLine" id="cb32-8" title="8"><span class="kw">microbenchmark</span>(DT1[, <span class="dt">distance :=</span> <span class="kw">haversine_distance</span>(lat_orig, lon_orig,</a>
-<a class="sourceLine" id="cb32-9" title="9">                                                    lat_dest, lon_dest)],</a>
-<a class="sourceLine" id="cb32-10" title="10">               </a>
-<a class="sourceLine" id="cb32-11" title="11">               DT2[, <span class="dt">distance :=</span> <span class="kw">distHaversine</span>(<span class="kw">cbind</span>(lon_orig, lat_orig),</a>
-<a class="sourceLine" id="cb32-12" title="12">                                               <span class="kw">cbind</span>(lon_orig, lat_orig))])</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">DT1 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">lat_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</a>
+<a class="sourceLine" id="cb33-2" title="2">                  <span class="dt">lon_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>),</a>
+<a class="sourceLine" id="cb33-3" title="3">                  <span class="dt">lat_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</a>
+<a class="sourceLine" id="cb33-4" title="4">                  <span class="dt">lon_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>))</a>
+<a class="sourceLine" id="cb33-5" title="5"></a>
+<a class="sourceLine" id="cb33-6" title="6">DT2 &lt;-<span class="st"> </span><span class="kw">copy</span>(DT1)</a>
+<a class="sourceLine" id="cb33-7" title="7"></a>
+<a class="sourceLine" id="cb33-8" title="8"><span class="kw">microbenchmark</span>(DT1[, <span class="dt">distance :=</span> <span class="kw">haversine_distance</span>(lat_orig, lon_orig,</a>
+<a class="sourceLine" id="cb33-9" title="9">                                                    lat_dest, lon_dest)],</a>
+<a class="sourceLine" id="cb33-10" title="10">               </a>
+<a class="sourceLine" id="cb33-11" title="11">               DT2[, <span class="dt">distance :=</span> <span class="kw">distHaversine</span>(<span class="kw">cbind</span>(lon_orig, lat_orig),</a>
+<a class="sourceLine" id="cb33-12" title="12">                                               <span class="kw">cbind</span>(lon_orig, lat_orig))])</a></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                                                             expr
 ##           DT1[, `:=`(distance, haversine_distance(lat_orig, lon_orig, lat_dest,      lon_dest))]
 ##  DT2[, `:=`(distance, distHaversine(cbind(lon_orig, lat_orig),      cbind(lon_orig, lat_orig)))]
-##    min    lq  mean median    uq    max neval cld
-##  20.73 21.07 24.53  21.34 22.35  59.89   100  a 
-##  38.18 39.17 53.60  51.93 60.21 193.83   100   b</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">rm</span>(DT1, DT2)</a></code></pre></div>
+##    min    lq  mean median    uq    max neval
+##  27.56 27.97 29.93  28.24 28.56 101.39   100
+##  47.95 49.44 55.69  51.35 61.90  69.67   100</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">rm</span>(DT1, DT2)</a></code></pre></div>
 </div>
 <div id="mutate_other" class="section level2">
 <h2><code>mutate_other</code></h2>
 <p>There may be occasions where a categorical variable in a <code>data.table</code> may need to modified to reduce the number of distinct categories. For example, you may want to plot a chart with a set number of facets, or ensure the smooth operation of <code>randomForest</code>, which accepts no more than 32 levels in a feature.</p>
 <p><code>mutate_other</code> keeps the <em>n</em> most common categories and changes the other categories to <code>Other</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb35-2" title="2">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">Fruit =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;eggplant&quot;</span>),</a>
-<a class="sourceLine" id="cb35-3" title="3">                                <span class="dt">size =</span> <span class="dv">20</span>,</a>
-<a class="sourceLine" id="cb35-4" title="4">                                <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.45</span>, <span class="fl">0.25</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),</a>
-<a class="sourceLine" id="cb35-5" title="5">                                <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb35-6" title="6">                 <span class="dt">Price =</span> <span class="kw">rpois</span>(<span class="dv">20</span>, <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb35-7" title="7"></a>
-<a class="sourceLine" id="cb35-8" title="8"><span class="kw">kable</span>(<span class="kw">mutate_other</span>(DT, <span class="st">&quot;Fruit&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>)[])</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb36-2" title="2">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">Fruit =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;eggplant&quot;</span>),</a>
+<a class="sourceLine" id="cb36-3" title="3">                                <span class="dt">size =</span> <span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb36-4" title="4">                                <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.45</span>, <span class="fl">0.25</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),</a>
+<a class="sourceLine" id="cb36-5" title="5">                                <span class="dt">replace =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb36-6" title="6">                 <span class="dt">Price =</span> <span class="kw">rpois</span>(<span class="dv">20</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb36-7" title="7"></a>
+<a class="sourceLine" id="cb36-8" title="8"><span class="kw">kable</span>(<span class="kw">mutate_other</span>(DT, <span class="st">&quot;Fruit&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>)[])</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -801,26 +809,26 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="ein-and-enotin" class="section level3">
 <h3><code>%ein%</code> and <code>%enotin%</code></h3>
 <p>The functions <code>%ein%</code> and <code>%enotin%</code> are motivated by a different sort of problem. Consider the following statement:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</a>
-<a class="sourceLine" id="cb36-2" title="2">iris[Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></a>
-<a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</a>
+<a class="sourceLine" id="cb37-2" title="2">iris[Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></a>
+<a class="sourceLine" id="cb37-3" title="3"><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</a></code></pre></div>
 <pre><code>## [1] 1.47</code></pre>
 <p>On the face of it, this appears to give the average ratio of <em>Iris setosa</em> and <em>Iris versicolour</em> irises. However, it only gives the average ratio of <em>setosa</em> irises, as the correct spelling is <em>Iris versicolor</em> not <em>-our</em>. This particular error is easy to make, (in fact when I wrote this vignette, the first hit of Google for <code>iris dataset</code> made the same spelling error), but it’s easy to imagine similar mistakes, such as mistaking the capitalization of a value. The functions <code>%ein%</code> and <code>%enotin%</code> strive to reduce the occurrence of this mistake. The functions operate exactly the same as <code>%in%</code> and <code>%enotin%</code> but error if any of the table of values to be matched against is not present in any of the values:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</a>
-<a class="sourceLine" id="cb38-2" title="2">iris[Species <span class="op">%ein%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></a>
-<a class="sourceLine" id="cb38-3" title="3"><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</a>
+<a class="sourceLine" id="cb39-2" title="2">iris[Species <span class="op">%ein%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</a></code></pre></div>
 <pre><code>## Error: `rhs` contained versicolour, but this value was not found in `lhs = Species`. All values of `rhs` must be in `lhs`. Ensure you have specified `rhs` correctly.</code></pre>
 <p>The <code>e</code> stands for ‘exists’; <em>i.e.</em> they should be read as “exists and in” and “exists and not in”.</p>
 </div>
 <div id="pin" class="section level3">
 <h3><code>%pin%</code></h3>
 <p>This performs a partial match (<em>i.e</em> <code>grepl</code>) but with a possibly more readable or intuitive syntax</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">identical</span>(iris[<span class="kw">grep</span>(<span class="st">&quot;v&quot;</span>, Species)],</a>
-<a class="sourceLine" id="cb40-2" title="2">          iris[Species <span class="op">%pin%</span><span class="st"> &quot;v&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">identical</span>(iris[<span class="kw">grep</span>(<span class="st">&quot;v&quot;</span>, Species)],</a>
+<a class="sourceLine" id="cb41-2" title="2">          iris[Species <span class="op">%pin%</span><span class="st"> &quot;v&quot;</span>])</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>If the RHS has more than one element, the matching is done on alternation (<em>i.e.</em> OR):</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">iris[Species <span class="op">%pin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ver&quot;</span>, <span class="st">&quot;vir&quot;</span>)] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span>head</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">iris[Species <span class="op">%pin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ver&quot;</span>, <span class="st">&quot;vir&quot;</span>)] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span>head</a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 1:          7.0         3.2          4.7         1.4 versicolor
 ## 2:          6.4         3.2          4.5         1.5 versicolor
@@ -837,10 +845,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="select_which" class="section level3">
 <h3><code>select_which</code></h3>
 <p>This provides a similar role to <code>dplyr::select_if</code> but was originally part of <code>package:grattan</code> so has a different name. It simply returns the columns whose <em>values</em> return <code>TRUE</code> when <code>Which</code> is applied. Additional columns (which may or not may satisfy <code>Which</code>) may be included by using <code>.and.dots</code>. (To remove columns, you can use <code>drop_col</code>).</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
-<a class="sourceLine" id="cb44-2" title="2">                 <span class="dt">y =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],</a>
-<a class="sourceLine" id="cb44-3" title="3">                 <span class="dt">AB =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</a>
-<a class="sourceLine" id="cb44-4" title="4"><span class="kw">select_which</span>(DT, anyNA, <span class="dt">.and.dots =</span> <span class="st">&quot;y&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb45-2" title="2">                 <span class="dt">y =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],</a>
+<a class="sourceLine" id="cb45-3" title="3">                 <span class="dt">AB =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb45-4" title="4"><span class="kw">select_which</span>(DT, anyNA, <span class="dt">.and.dots =</span> <span class="st">&quot;y&quot;</span>)</a></code></pre></div>
 <pre><code>##       AB y
 ## 1:    NA a
 ## 2:  TRUE b
@@ -863,18 +871,18 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="auc" class="section level3">
 <h3><code>auc</code></h3>
 <p>The area under the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">(ROC) curve</a> gives a single value to measure the tradeoff between true positives and false positives.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">y =</span> <span class="op">!</span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb46-2" title="2">                 <span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb46-3" title="3">dt[, pred <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(<span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> .SD), <span class="dt">newdata =</span> .SD)]</a>
-<a class="sourceLine" id="cb46-4" title="4"></a>
-<a class="sourceLine" id="cb46-5" title="5">dt[, <span class="kw">auc</span>(y, pred)]</a></code></pre></div>
-<pre><code>## [1] 0.533</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">y =</span> <span class="op">!</span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb47-2" title="2">                 <span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb47-3" title="3">dt[, pred <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(<span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> .SD), <span class="dt">newdata =</span> .SD)]</a>
+<a class="sourceLine" id="cb47-4" title="4"></a>
+<a class="sourceLine" id="cb47-5" title="5">dt[, <span class="kw">auc</span>(y, pred)]</a></code></pre></div>
+<pre><code>## [1] 0.577</code></pre>
 </div>
 <div id="select_grep" class="section level3">
 <h3><code>select_grep</code></h3>
 <p>To select columns matching a regular expression:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>)</a></code></pre></div>
 <pre><code>##         arr_time sched_arr_time arr_delay carrier
 ##      1:      830            819        11      UA
 ##      2:      850            830        20      UA
@@ -888,8 +896,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 336775:       NA           1344        NA      MQ
 ## 336776:       NA           1020        NA      MQ</code></pre>
 <p>You can use the additional arguments <code>.and</code> and <code>.but.not</code> to override the patterns.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>, <span class="dt">.and =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">.but.not =</span> <span class="st">&quot;arr_time&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>, <span class="dt">.and =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">.but.not =</span> <span class="st">&quot;arr_time&quot;</span>)</a></code></pre></div>
 <pre><code>##         year sched_arr_time arr_delay carrier
 ##      1: 2013            819        11      UA
 ##      2: 2013            830        20      UA
@@ -909,59 +917,60 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="rq" class="section level3">
 <h3><code>RQ</code></h3>
 <p>This is simply a shorthand to test whether a package needs installing. The package name need not be quoted, for convenience.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">RQ</span>(dplyr, <span class="st">&quot;dplyr must be installed&quot;</span>)</a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="kw">RQ</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;dplyr needs installing&quot;</span>, <span class="st">&quot;dplyr installed.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">RQ</span>(dplyr, <span class="st">&quot;dplyr must be installed&quot;</span>)</a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">RQ</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;dplyr needs installing&quot;</span>, <span class="st">&quot;dplyr installed.&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;dplyr installed.&quot;</code></pre>
 </div>
 <div id="ahull" class="section level3">
 <h3><code>ahull</code></h3>
 <p>This locates the biggest rectangle beneath a curve:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">ggplot</span>(<span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-2" title="2"><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>)),</a>
-<a class="sourceLine" id="cb54-4" title="4">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin,</a>
-<a class="sourceLine" id="cb54-5" title="5">                <span class="dt">xmax =</span> xmax,</a>
-<a class="sourceLine" id="cb54-6" title="6">                <span class="dt">ymin =</span> ymin,</a>
-<a class="sourceLine" id="cb54-7" title="7">                <span class="dt">ymax =</span> ymax),</a>
-<a class="sourceLine" id="cb54-8" title="8">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">set.seed</span>(<span class="dv">101</span>)</a>
-<a class="sourceLine" id="cb55-2" title="2">ahull_dt &lt;-</a>
-<a class="sourceLine" id="cb55-3" title="3"><span class="st">  </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>) <span class="op">/</span><span class="st"> </span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb55-4" title="4">             <span class="dt">y =</span> <span class="kw">cumsum</span>(<span class="kw">rnorm</span>(<span class="dv">101</span>, <span class="fl">0.05</span>)))</a>
-<a class="sourceLine" id="cb55-5" title="5"><span class="kw">ggplot</span>(ahull_dt) <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-6" title="6"><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-7" title="7"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt), </a>
-<a class="sourceLine" id="cb55-8" title="8">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
-<a class="sourceLine" id="cb55-9" title="9">                <span class="dt">xmax =</span> xmax, </a>
-<a class="sourceLine" id="cb55-10" title="10">                <span class="dt">ymin =</span> ymin, </a>
-<a class="sourceLine" id="cb55-11" title="11">                <span class="dt">ymax =</span> ymax), </a>
-<a class="sourceLine" id="cb55-12" title="12">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-13" title="13"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
-<a class="sourceLine" id="cb55-14" title="14">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb55-15" title="15">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
-<a class="sourceLine" id="cb55-16" title="16">                <span class="dt">xmax =</span> xmax, </a>
-<a class="sourceLine" id="cb55-17" title="17">                <span class="dt">ymin =</span> ymin, </a>
-<a class="sourceLine" id="cb55-18" title="18">                <span class="dt">ymax =</span> ymax), </a>
-<a class="sourceLine" id="cb55-19" title="19">            <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-20" title="20"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
-<a class="sourceLine" id="cb55-21" title="21">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-22" title="22">                         <span class="dt">minH =</span> <span class="dv">4</span>), </a>
-<a class="sourceLine" id="cb55-23" title="23">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
-<a class="sourceLine" id="cb55-24" title="24">                <span class="dt">xmax =</span> xmax, </a>
-<a class="sourceLine" id="cb55-25" title="25">                <span class="dt">ymin =</span> ymin, </a>
-<a class="sourceLine" id="cb55-26" title="26">                <span class="dt">ymax =</span> ymax), </a>
-<a class="sourceLine" id="cb55-27" title="27">            <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-28" title="28"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
-<a class="sourceLine" id="cb55-29" title="29">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb55-30" title="30">                         <span class="dt">minW =</span> <span class="fl">0.25</span>), </a>
-<a class="sourceLine" id="cb55-31" title="31">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
-<a class="sourceLine" id="cb55-32" title="32">                <span class="dt">xmax =</span> xmax, </a>
-<a class="sourceLine" id="cb55-33" title="33">                <span class="dt">ymin =</span> ymin, </a>
-<a class="sourceLine" id="cb55-34" title="34">                <span class="dt">ymax =</span> ymax), </a>
-<a class="sourceLine" id="cb55-35" title="35">            <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</a>
-<a class="sourceLine" id="cb55-36" title="36">            <span class="dt">fill =</span> <span class="ot">NA</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ggplot</span>(<span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-2" title="2"><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>)),</a>
+<a class="sourceLine" id="cb57-4" title="4">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin,</a>
+<a class="sourceLine" id="cb57-5" title="5">                <span class="dt">xmax =</span> xmax,</a>
+<a class="sourceLine" id="cb57-6" title="6">                <span class="dt">ymin =</span> ymin,</a>
+<a class="sourceLine" id="cb57-7" title="7">                <span class="dt">ymax =</span> ymax),</a>
+<a class="sourceLine" id="cb57-8" title="8">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">set.seed</span>(<span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb58-2" title="2">ahull_dt &lt;-</a>
+<a class="sourceLine" id="cb58-3" title="3"><span class="st">  </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>) <span class="op">/</span><span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb58-4" title="4">             <span class="dt">y =</span> <span class="kw">cumsum</span>(<span class="kw">rnorm</span>(<span class="dv">101</span>, <span class="fl">0.05</span>)))</a>
+<a class="sourceLine" id="cb58-5" title="5"><span class="kw">ggplot</span>(ahull_dt) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-6" title="6"><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-7" title="7"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt), </a>
+<a class="sourceLine" id="cb58-8" title="8">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
+<a class="sourceLine" id="cb58-9" title="9">                <span class="dt">xmax =</span> xmax, </a>
+<a class="sourceLine" id="cb58-10" title="10">                <span class="dt">ymin =</span> ymin, </a>
+<a class="sourceLine" id="cb58-11" title="11">                <span class="dt">ymax =</span> ymax), </a>
+<a class="sourceLine" id="cb58-12" title="12">            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-13" title="13"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
+<a class="sourceLine" id="cb58-14" title="14">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb58-15" title="15">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
+<a class="sourceLine" id="cb58-16" title="16">                <span class="dt">xmax =</span> xmax, </a>
+<a class="sourceLine" id="cb58-17" title="17">                <span class="dt">ymin =</span> ymin, </a>
+<a class="sourceLine" id="cb58-18" title="18">                <span class="dt">ymax =</span> ymax), </a>
+<a class="sourceLine" id="cb58-19" title="19">            <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-20" title="20"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
+<a class="sourceLine" id="cb58-21" title="21">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb58-22" title="22">                         <span class="dt">minH =</span> <span class="dv">4</span>), </a>
+<a class="sourceLine" id="cb58-23" title="23">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
+<a class="sourceLine" id="cb58-24" title="24">                <span class="dt">xmax =</span> xmax, </a>
+<a class="sourceLine" id="cb58-25" title="25">                <span class="dt">ymin =</span> ymin, </a>
+<a class="sourceLine" id="cb58-26" title="26">                <span class="dt">ymax =</span> ymax), </a>
+<a class="sourceLine" id="cb58-27" title="27">            <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-28" title="28"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</a>
+<a class="sourceLine" id="cb58-29" title="29">                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb58-30" title="30">                         <span class="dt">minW =</span> <span class="fl">0.25</span>), </a>
+<a class="sourceLine" id="cb58-31" title="31">            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </a>
+<a class="sourceLine" id="cb58-32" title="32">                <span class="dt">xmax =</span> xmax, </a>
+<a class="sourceLine" id="cb58-33" title="33">                <span class="dt">ymin =</span> ymin, </a>
+<a class="sourceLine" id="cb58-34" title="34">                <span class="dt">ymax =</span> ymax), </a>
+<a class="sourceLine" id="cb58-35" title="35">            <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb58-36" title="36">            <span class="dt">fill =</span> <span class="ot">NA</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 </div>
 <div id="hutils-v1.3.0" class="section level2">
@@ -969,20 +978,20 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="weighted_quantile" class="section level3">
 <h3><code>weighted_quantile</code></h3>
 <p>Simply a version of <code>quantile</code> supporting weighted values:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb56-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb56-3" title="3"><span class="kw">quantile</span>(x, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="dt">names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb59-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb59-3" title="3"><span class="kw">quantile</span>(x, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="dt">names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## [1] 3.25 7.75</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">weighted_quantile</span>(x, w, <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">weighted_quantile</span>(x, w, <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</a></code></pre></div>
 <pre><code>## [1] 4 9</code></pre>
 </div>
 <div id="mutate_ntile" class="section level3">
 <h3><code>mutate_ntile</code></h3>
 <p>To add a column of ntiles (say, for later summarizing):</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb60-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb60-3" title="3"><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb60-4" title="4"><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-4" title="4"><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</a></code></pre></div>
 <pre><code>##         year month day origin dest distance distanceQuintile
 ##      1: 2013     1   1    EWR  IAH     1400                4
 ##      2: 2013     1   1    LGA  IAH     1416                4
@@ -996,10 +1005,10 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 336775: 2013     9  30    LGA  CLE      419                1
 ## 336776: 2013     9  30    LGA  RDU      431                2</code></pre>
 <p>You can use non-standard evaluation (as above) or you can quote the <code>col</code> argument. Use <code>character.only = TRUE</code> to ensure column is only interpreted as character.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb62-4" title="4"><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-3" title="3"><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-4" title="4"><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</a></code></pre></div>
 <pre><code>##         year month day origin dest distance distanceQuintile
 ##      1: 2013     1   1    EWR  IAH     1400                4
 ##      2: 2013     1   1    LGA  IAH     1416                4
@@ -1012,13 +1021,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 336774: 2013     9  30    LGA  BNA      764                3
 ## 336775: 2013     9  30    LGA  CLE      419                1
 ## 336776: 2013     9  30    LGA  RDU      431                2</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">flights <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="st">  </span><span class="kw">mutate_ntile</span>(<span class="st">&quot;distance&quot;</span>,</a>
-<a class="sourceLine" id="cb64-4" title="4">               <span class="dt">n =</span> 5L,</a>
-<a class="sourceLine" id="cb64-5" title="5">               <span class="dt">character.only =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-6" title="6"><span class="st">  </span>.[, dep_delay <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">coalesce</span>(dep_delay, <span class="dv">0</span>)] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb64-7" title="7"><span class="st">  </span>.[, .(<span class="dt">avgDelay =</span> <span class="kw">mean</span>(dep_delay)), keyby =<span class="st"> &quot;distanceQuintile&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">flights <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-2" title="2"><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-3" title="3"><span class="st">  </span><span class="kw">mutate_ntile</span>(<span class="st">&quot;distance&quot;</span>,</a>
+<a class="sourceLine" id="cb67-4" title="4">               <span class="dt">n =</span> 5L,</a>
+<a class="sourceLine" id="cb67-5" title="5">               <span class="dt">character.only =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-6" title="6"><span class="st">  </span>.[, dep_delay <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">coalesce</span>(dep_delay, <span class="dv">0</span>)] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-7" title="7"><span class="st">  </span>.[, .(<span class="dt">avgDelay =</span> <span class="kw">mean</span>(dep_delay)), keyby =<span class="st"> &quot;distanceQuintile&quot;</span>]</a></code></pre></div>
 <pre><code>##    distanceQuintile avgDelay
 ## 1:                1    12.88
 ## 2:                2    12.97
@@ -1029,8 +1038,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="longest_affix" class="section level3">
 <h3><code>longest_affix</code></h3>
 <p>Trim common affixes can be useful during data cleaning:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">trim_common_affixes</span>(<span class="kw">c</span>(<span class="st">&quot;CurrentHousingCosts(weekly)&quot;</span>,</a>
-<a class="sourceLine" id="cb66-2" title="2">                      <span class="st">&quot;CurrentFuelCosts(weekly)&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">trim_common_affixes</span>(<span class="kw">c</span>(<span class="st">&quot;CurrentHousingCosts(weekly)&quot;</span>,</a>
+<a class="sourceLine" id="cb69-2" title="2">                      <span class="st">&quot;CurrentFuelCosts(weekly)&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Housing&quot; &quot;Fuel&quot;</code></pre>
 </div>
 </div>
@@ -1039,18 +1048,18 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="section" class="section level3">
 <h3><code>%&lt;-&gt;%</code></h3>
 <p>Referred to as <code>swap</code> in the documentation. Used to swap values between object names</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">a &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb68-2" title="2">b &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb68-3" title="3">a <span class="op">%&lt;-&gt;%</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb68-4" title="4"><span class="kw">identical</span>(<span class="kw">c</span>(a, b), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">a &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb71-2" title="2">b &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb71-3" title="3">a <span class="op">%&lt;-&gt;%</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb71-4" title="4"><span class="kw">identical</span>(<span class="kw">c</span>(a, b), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="average_bearing" class="section level3">
 <h3><code>average_bearing</code></h3>
 <p>Determine the average bearing of vectors. Slightly more difficult than simply the average modulo 360 since its the most acute sector is desired.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">average_bearing</span>(<span class="dv">0</span>, <span class="dv">270</span>)  <span class="co"># NW</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">average_bearing</span>(<span class="dv">0</span>, <span class="dv">270</span>)  <span class="co"># NW</span></a></code></pre></div>
 <pre><code>## [1] 315</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">270</span>))          <span class="co"># SE (i.e. wrong)</span></a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">270</span>))          <span class="co"># SE (i.e. wrong)</span></a></code></pre></div>
 <pre><code>## [1] 135</code></pre>
 </div>
 <div id="dir2" class="section level3">
@@ -1060,7 +1069,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="mode" class="section level3">
 <h3><code>Mode</code></h3>
 <p>The statistical mode; the most common element.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">Mode</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">Mode</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="replace_pattern_in" class="section level3">
@@ -1070,24 +1079,24 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="samp" class="section level3">
 <h3><code>samp</code></h3>
 <p>A safer version of <code>sample</code>. I use it because I found the following behaviour of sample surprising.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb76-2" title="2">                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb76-3" title="3">DT[, .(<span class="dt">Base =</span> <span class="kw">sample</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb79-2" title="2">                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb79-3" title="3">DT[, .(<span class="dt">Base =</span> <span class="kw">sample</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</a></code></pre></div>
 <pre><code>##    x y Base
 ## 1: 2 3    2
 ## 2: 2 3    3
-## 3: 3 4    4
-## 4: 3 4    3
-## 5: 5 5    5
+## 3: 3 4    3
+## 4: 3 4    4
+## 5: 5 5    3
 ## 6: 5 5    1
-## 7: 5 5    3
+## 7: 5 5    5
 ## 8: 5 5    4
 ## 9: 5 5    2</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">DT[, .(<span class="dt">Base =</span> <span class="kw">samp</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">DT[, .(<span class="dt">Base =</span> <span class="kw">samp</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</a></code></pre></div>
 <pre><code>## `length(x) = 1`, so returning `rep.int(x, 1)`.</code></pre>
 <pre><code>##    x y Base
-## 1: 2 3    3
-## 2: 2 3    2
+## 1: 2 3    2
+## 2: 2 3    3
 ## 3: 3 4    3
 ## 4: 3 4    4
 ## 5: 5 5    5</code></pre>

@@ -1,9 +1,21 @@
+
+# hutils 1.4.1
+* Bug fixes:
+  - `samp` works with size > length.
+
+* New functions
+  - `provide.file` To ensure a file (including its directory) exists.
+  
+* Enhancements:
+  - `provide.dir` returns the directory requested on success.
+
 # hutils 1.4.0
 * New functions:
   - `%<->%` To swap values between objects
   - `average_bearing`, the bearing bisecting two vectors
   - `dir2`, (Windows only) a much faster version of `dir()`
   - `Mode`, statistical mode
+
   - `replace_pattern_in` to find-and-replace on a pattern in all files in a directory
   - `samp`, a 'safe' version of `sample`.
   
@@ -15,7 +27,7 @@
     used in `tidyr::uncount`.
   - `mutate_ntile` now works for a variable with `DT` 
   - `find_pattern_in` now accepts `file_contents_ignore_case`.
-  - `find_pattern_in` may 
+  - `find_pattern_in` no longer complains about `perl`, `fixed` conflicts.
 
 # hutils 1.3.0
 * Bug fixes:

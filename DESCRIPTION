@@ -1,8 +1,8 @@
 Package: hutils
 Type: Package
 Title: Miscellaneous R Functions and Aliases
-Version: 1.4.0
-Date: 2019-03-10
+Version: 1.5.0
+Date: 2019-05-31
 Authors@R: c(person("Hugh", "Parsonage", role = c("aut", "cre"), email = "hugh.parsonage@gmail.com"),
              person("Michael", "Frasco", role = "ctb"),
              person("Ben", "Hamner", role = "ctb"))
@@ -23,9 +23,9 @@ RoxygenNote: 6.1.1
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-03-09 15:00:59 UTC; hughp
+Packaged: 2019-05-31 13:19:48 UTC; PBOAdmin
 Author: Hugh Parsonage [aut, cre],
   Michael Frasco [ctb],
   Ben Hamner [ctb]
 Repository: CRAN
-Date/Publication: 2019-03-09 15:30:03 UTC
+Date/Publication: 2019-05-31 14:00:03 UTC

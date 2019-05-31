@@ -15,7 +15,7 @@ tryCatch({
   library(hutils, warn.conflicts = FALSE)
 }, 
 # requireNamespace does not detect errors like
-# package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version
+# package â€˜dplyrâ€™ was installed by an R version with different internals; it needs to be reinstalled for use with this R version
 error = function(e) {
   opts_chunk$set(eval = FALSE)
 })
