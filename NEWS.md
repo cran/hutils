@@ -1,5 +1,14 @@
 
-# hutils 1.4.1
+# hutils 1.5.1
+* Bug fixes:
+  - `weighted_ntile` is less susceptible to integer overflow (#36)
+
+* Internal
+  - Version dependencies now have no upper bound for recommended packages,
+    to avoid issues with CRAN.
+
+
+# hutils 1.5.0
 * Bug fixes:
   - `samp` works with size > length.
 
