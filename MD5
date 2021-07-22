@@ -1,7 +1,7 @@
-e148672de47cf4ac9ae0ccb4be397694 *DESCRIPTION
+ff997df4df373346daa84f146f92fe31 *DESCRIPTION
 6d3164a99fb0c9469a8405a86fd66497 *NAMESPACE
-a1e658c4b229d8cd249d3fd93927fc92 *NEWS.md
-a23d24cc4b97344e356bf9aec1d480b6 *R/Mode.R
+4257025872e9b83bc403939d05886348 *NEWS.md
+916260d17457dba3a6d2d1cee0a88dba *R/Mode.R
 6bd84b7cfada15ad700db4a9aaafa2b3 *R/RQ.R
 87027702a983620fcb902dbd2854bd96 *R/Switch.R
 ba86d6de75617508bb43dc01658a4669 *R/aliases.R
@@ -9,7 +9,7 @@ f98d03484e37fcc3dc1ec111a5bc9117 *R/all_same_sign.R
 c533163fc7a06d2444e0a2ec1d3344b6 *R/any_grepl.R
 0c40822d3aacf1f1014b639ee3fb95ce *R/auc.R
 2456bf38166d5f36e6edf34aabbf6a33 *R/average_bearing.R
-28c0816420d94cdf8cf852c68ba8ff04 *R/bearing.R
+ec458731e10bffd609b44f128ed43285 *R/bearing.R
 fcd5d477ca064374ecb99c58e54b6722 *R/coalesce.R
 80535143d59bcc75a0721299214d5d60 *R/dev_copy2a4.R
 10149df85de91b62f00dc596a42912fc *R/dir2.R
@@ -37,8 +37,8 @@ c6417f823beb8c6c247ee19878e4262a *R/notchin.R
 ed0215a09103aea96d77af44cfe74923 *R/notin.R
 c07618af5dfe850fdb7a0c85e72eb4c5 *R/number2word.R
 1cae3ce37c14c68f4528161de0b512b1 *R/pin.R
-94c59ec57f5fa502d92fb882758c97d3 *R/prohibit_unequal_length_vectors.R
-d0d6715ee29e606c5f035df218bb46ec *R/prohibit_vector_recycling.R
+cb5beb790c25aede3cf7866ce3d825b6 *R/prohibit_unequal_length_vectors.R
+01d66bcc02284228e5ef7537b611b38f *R/prohibit_vector_recycling.R
 2b5fd5a455d7f55143e76e386eebbd47 *R/provide-dir.R
 d362d4925354d2c0113ffafd5ceb2d94 *R/provide-file.R
 53e4d039529c43d266641da86d5e6f93 *R/replace_pattern_in.R
@@ -58,9 +58,9 @@ e37368eeabb02bf1b6771d27ab7b0b69 *R/weighted_ntile.R
 14c98459ed78352f003d4fffa445f676 *R/zzz.R
 e7ac5c11a61201cf21a7a25b38f8e569 *README.md
 e043f6d887ebbe94ddb47db2dd5538e5 *build/vignette.rds
-1cf2c11ce7e428c23e561090d5cbc46d *inst/doc/hutils.R
-15d6fe66904318ce68a2e1493036ea9c *inst/doc/hutils.Rmd
-34dc39477a4b90578c2649ff7afc8e1c *inst/doc/hutils.html
+6dc2d0ff4bd6ba4c3a81a84d62369f21 *inst/doc/hutils.R
+e5874c2a5e8ff2f82c7e02a25944a39c *inst/doc/hutils.Rmd
+19fbd55291c17f3fac499d3b90b9040d *inst/doc/hutils.html
 edd7ae8a2de42609f5fa5ad9f6a988e3 *inst/extdata/countfiles.ps1
 0d9312097d0d027e63446033dad80be2 *man/Mode.Rd
 c849df99860601602b9ca14c7486875d *man/RQ.Rd
@@ -71,7 +71,7 @@ c849df99860601602b9ca14c7486875d *man/RQ.Rd
 75b2deeeb38e3a0cceea5319fd31e231 *man/any_grepl.Rd
 512f7899cfddb60b83755f67cbdabd09 *man/auc.Rd
 6663279f1f84e4c8fc55179c160c57f2 *man/average_bearing.Rd
-7bf38d65d6ec589a35804d0c457e223a *man/bearing.Rd
+20f61d6911d5ef9393208161708e15d4 *man/bearing.Rd
 6c289bc5396d31ff1a0e8554171eb09c *man/coalesce.Rd
 5edd5806229175733c9a763ac2ad458b *man/dev_copy2a4.Rd
 ee911d3f581aa69c29583f88bd710d28 *man/dir2.Rd
@@ -97,8 +97,8 @@ a6da4284ac40d43c5c75091be58ebb52 *man/mean_na.Rd
 2c18f36b36d8f7947e7d8bd1b5098a67 *man/mutate_ntile.Rd
 632235d24c8d51f40c8bebd92994fd66 *man/mutate_other.Rd
 89ed1e569187e7b4ac500767235ea5fc *man/ngrep.Rd
-79460806c9277a366b3af49cb435d08a *man/prohibit_unequal_length_vectors.Rd
-c243f7a37b75e207597446dbd9928f28 *man/prohibit_vector_recycling.Rd
+641ddca88f7b5d8d7dc91277954fab5e *man/prohibit_unequal_length_vectors.Rd
+3f825dec2f23282d80dd1a0031a6ad5d *man/prohibit_vector_recycling.Rd
 4d5ced745a4bbe98d1b7f2b2ab2a8d40 *man/provide.dir.Rd
 ebbaeb1c66a2226b0f7f3879c188d9b3 *man/provide.file.Rd
 36942e465d0c9cdbfd8e21ea7e463930 *man/replace_pattern_in.Rd
@@ -128,7 +128,7 @@ ec0eeed3ec502efcebb93ec979ebb92e *tests/testthat/test-1-2-0_any_grepl.R
 4c91b319d10f296cb2ee38edb239016c *tests/testthat/test-dev_copy2a4.R
 515d0a250cbabe5eb06170f4c6a6ddcd *tests/testthat/test-dir2.R
 7049780a83e5c1158f2f50714499a3d6 *tests/testthat/test-if_else-factor.R
-8fa83f804f7ba8409820f38f2dee6e8e *tests/testthat/test-prohibit_vector.R
+cf289fa3c543ff5b9a1c3526689f9538 *tests/testthat/test-prohibit_vector.R
 592612823ad951ea07590e9f1a9fb413 *tests/testthat/test-replace_pattern_in.R
 686b3327da025b5815a4fbad94eb0688 *tests/testthat/test-select_grep.R
 4718001aa78dd0cc680297704e24c321 *tests/testthat/test-switch.R
@@ -170,8 +170,8 @@ d556c320c2943189514ac03e7f60f972 *tests/testthat/test_1-3-0_isTrueFalse.R
 dc3afc0818c9b2d6ba8745a5fc30e23a *tests/testthat/test_1-3-0_longest_affix.R
 f4aea6a82d031eed8a6a45acaefa5d94 *tests/testthat/test_1-3-0_mutate_ntile.R
 9c7492f5d7e4689c6e9c8a1fa1b56b3c *tests/testthat/test_1-3-0_weight2rows.R
-b2a2685434da02a2522637e77d9bd62f *tests/testthat/test_1-3-0_weighted_ntile.R
-c53186330c077ea897ea9e3ea7318e5f *tests/testthat/test_1-4-0_Mode.R
+fed2dd047bec00108fd39f4b29ab2821 *tests/testthat/test_1-3-0_weighted_ntile.R
+b7dfd83267d0525574341eee5edc5a61 *tests/testthat/test_1-4-0_Mode.R
 0b172241d7f771f22fe7e7d88ed6e6f9 *tests/testthat/test_1-4-0_average_bearing.R
 6ad73c866971a3a82a37ab0e2655c6f1 *tests/testthat/test_1-4-0_mutate_ntile.R
 2e0a949a9c3dd23d81e930357fcab549 *tests/testthat/test_1-4-0_numbers-v-words.R
@@ -179,10 +179,11 @@ d669f8a987a62cd597e8863bba7520a7 *tests/testthat/test_1-4-0_samp.R
 0edf025582a647f239192cfc7ee4f29c *tests/testthat/test_1-4-0_weight2rows.R
 f5c30fc78a8ba5764b20b3618dc926f7 *tests/testthat/test_1-4-0_weighted-quantile.R
 2c54c333e6e9ea5d4b056e248afc49ec *tests/testthat/test_1-4-1_samp.R
-cba4149553ea55922e23c094b5949696 *tests/testthat/test_1-6-0_bearing.R
+e9a07da47eb016c5561e5586479bcbab *tests/testthat/test_1-6-0_bearing.R
+7f0fa4359a65223f0705c0f077349e2f *tests/testthat/test_1-7-0-Mode.R
 de4572dbf5ec84a12d6312354cd540e3 *tests/testthat/test_benchmarks.R
 49816010f376f2098ce7e5a12562c7f4 *tests/testthat/test_check_pkg_dependencies.R
-4f80e40951f176b97a69b397f68b6b46 *tests/testthat/test_find_pattern_in.R
+da77a006ae2a57f32897275e8585f549 *tests/testthat/test_find_pattern_in.R
 bea32bfb8a410566de7816af2ae5b4af *tests/testthat/test_mutate_ntile.R
 a72490b5bb5ac118e7bb540018ad80bd *tests/testthat/test_ntile_overflow.R
 54f08e8d86eafede5076ec2e4073397d *tests/testthat/test_provide-file.R
@@ -190,4 +191,4 @@ a72490b5bb5ac118e7bb540018ad80bd *tests/testthat/test_ntile_overflow.R
 8ce383d1243fb0477b7060fddae9ef6e *tests/testthat/version-sha1s/v1-1-0.tsv
 60f6e03190d90548aeb7eebec13f449f *tests/testthat/version-sha1s/v1-2-0.tsv
 35169d5a1f6f5df472ea1b2172b71961 *tests/testthat/version-sha1s/v1-3-0.tsv
-15d6fe66904318ce68a2e1493036ea9c *vignettes/hutils.Rmd
+e5874c2a5e8ff2f82c7e02a25944a39c *vignettes/hutils.Rmd

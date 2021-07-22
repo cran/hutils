@@ -198,7 +198,8 @@ RQ(dplyr, "dplyr must be installed")
 RQ("dplyr", "dplyr needs installing", "dplyr installed.")
 
 ## ----ahull-1------------------------------------------------------------------
-ggplot(data.table(x = c(0, 1, 2, 3, 4), y = c(0, 1, 2, 0.1, 0))) +
+if (!identical(Sys.info()[["sysname"]], "Darwin"))
+  ggplot(data.table(x = c(0, 1, 2, 3, 4), y = c(0, 1, 2, 0.1, 0))) +
   geom_area(aes(x, y)) +
   geom_rect(data = ahull(, c(0, 1, 2, 3, 4), c(0, 1, 2, 0.1, 0)),
             aes(xmin = xmin,
@@ -212,6 +213,7 @@ set.seed(101)
 ahull_dt <-
   data.table(x = c(0:100) / 100,
              y = cumsum(rnorm(101, 0.05)))
+if (!identical(Sys.info()[["sysname"]], "Darwin"))
 ggplot(ahull_dt) +
   geom_area(aes(x, y)) + 
   geom_rect(data = ahull(ahull_dt), 

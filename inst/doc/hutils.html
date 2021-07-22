@@ -12,43 +12,44 @@
 
 <meta name="author" content="Hugh Parsonage" />
 
-<meta name="date" content="2020-11-16" />
+<meta name="date" content="2021-07-22" />
 
 <title>Hutils</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
-});
-</script>
-
-
-<style type="text/css">code{white-space: pre;}</style>
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -68,7 +69,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -125,187 +126,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type="text/css">body {
-background-color: #fff;
-margin: 1em auto;
-max-width: 700px;
-overflow: visible;
-padding-left: 2em;
-padding-right: 2em;
-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.35;
-}
-#TOC {
-clear: both;
-margin: 0 0 10px 10px;
-padding: 4px;
-width: 400px;
-border: 1px solid #CCCCCC;
-border-radius: 5px;
-background-color: #f6f6f6;
-font-size: 13px;
-line-height: 1.3;
-}
-#TOC .toctitle {
-font-weight: bold;
-font-size: 15px;
-margin-left: 5px;
-}
-#TOC ul {
-padding-left: 40px;
-margin-left: -1.5em;
-margin-top: 5px;
-margin-bottom: 5px;
-}
-#TOC ul ul {
-margin-left: -2em;
-}
-#TOC li {
-line-height: 16px;
-}
-table {
-margin: 1em auto;
-border-width: 1px;
-border-color: #DDDDDD;
-border-style: outset;
-border-collapse: collapse;
-}
-table th {
-border-width: 2px;
-padding: 5px;
-border-style: inset;
-}
-table td {
-border-width: 1px;
-border-style: inset;
-line-height: 18px;
-padding: 5px 5px;
-}
-table, table th, table td {
-border-left-style: none;
-border-right-style: none;
-}
-table thead, table tr.even {
-background-color: #f7f7f7;
-}
-p {
-margin: 0.5em 0;
-}
-blockquote {
-background-color: #f6f6f6;
-padding: 0.25em 0.75em;
-}
-hr {
-border-style: solid;
-border: none;
-border-top: 1px solid #777;
-margin: 28px 0;
-}
-dl {
-margin-left: 0;
-}
-dl dd {
-margin-bottom: 13px;
-margin-left: 13px;
-}
-dl dt {
-font-weight: bold;
-}
-ul {
-margin-top: 0;
-}
-ul li {
-list-style: circle outside;
-}
-ul ul {
-margin-bottom: 0;
-}
-pre, code {
-background-color: #f7f7f7;
-border-radius: 3px;
-color: #333;
-white-space: pre-wrap; 
-}
-pre {
-border-radius: 3px;
-margin: 5px 0px 10px 0px;
-padding: 10px;
-}
-pre:not([class]) {
-background-color: #f7f7f7;
-}
-code {
-font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
-}
-p > code, li > code {
-padding: 2px 0px;
-}
-div.figure {
-text-align: center;
-}
-img {
-background-color: #FFFFFF;
-padding: 2px;
-border: 1px solid #DDDDDD;
-border-radius: 3px;
-border: 1px solid #CCCCCC;
-margin: 0 5px;
-}
-h1 {
-margin-top: 0;
-font-size: 35px;
-line-height: 40px;
-}
-h2 {
-border-bottom: 4px solid #f7f7f7;
-padding-top: 10px;
-padding-bottom: 2px;
-font-size: 145%;
-}
-h3 {
-border-bottom: 2px solid #f7f7f7;
-padding-top: 10px;
-font-size: 120%;
-}
-h4 {
-border-bottom: 1px solid #f7f7f7;
-margin-left: 8px;
-font-size: 105%;
-}
-h5, h6 {
-border-bottom: 1px solid #ccc;
-font-size: 105%;
-}
-a {
-color: #0033dd;
-text-decoration: none;
-}
-a:hover {
-color: #6666ff; }
-a:visited {
-color: #800080; }
-a:visited:hover {
-color: #BB00BB; }
-a[href^="http:"] {
-text-decoration: underline; }
-a[href^="https:"] {
-text-decoration: underline; }
 
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
-</style>
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -319,7 +141,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Hutils</h1>
 <h4 class="author">Hugh Parsonage</h4>
-<h4 class="date">2020-11-16</h4>
+<h4 class="date">2021-07-22</h4>
 
 
 
@@ -327,38 +149,37 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1><code>hutils</code> package</h1>
 <p>My name is Hugh. I’ve written some miscellaneous functions that don’t seem to belong in a particular package. I’ve usually put these in <code>R/utils.R</code> when I write a package. Thus, <code>hutils</code>.</p>
 <p>This vignette just goes through each exported function.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(knitr)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
 <pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.0.2</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>suggested_packages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;nycflights13&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;microbenchmark&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="kw">all</span>(<span class="kw">vapply</span>(suggested_packages, requireNamespace, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">FUN.VALUE =</span> <span class="ot">FALSE</span>)))</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">tryCatch</span>({</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">library</span>(geosphere)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">library</span>(nycflights13)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">library</span>(dplyr, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">library</span>(ggplot2)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="kw">library</span>(microbenchmark)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="kw">library</span>(data.table, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="kw">library</span>(magrittr)</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="kw">library</span>(hutils, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a>}, </span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co"># requireNamespace does not detect errors like</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="dt">error =</span> <span class="cf">function</span>(e) {</span>
-<span id="cb4-14"><a href="#cb4-14"></a>  opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb4-15"><a href="#cb4-15"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>suggested_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;geosphere&quot;</span>, <span class="st">&quot;nycflights13&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;microbenchmark&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> <span class="fu">all</span>(<span class="fu">vapply</span>(suggested_packages, requireNamespace, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">FUN.VALUE =</span> <span class="cn">FALSE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tryCatch</span>({</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(geosphere)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(nycflights13)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(microbenchmark)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(data.table, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(magrittr)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(hutils, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># requireNamespace does not detect errors like</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># package ‘dplyr’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">eval =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>## Warning: package &#39;geosphere&#39; was built under R version 4.0.2</code></pre>
 <pre><code>## Warning: package &#39;nycflights13&#39; was built under R version 4.0.2</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.0.2</code></pre>
-<pre><code>## Warning: package &#39;data.table&#39; was built under R version 4.0.2</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.0.5</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
 <div id="aliases" class="section level2">
 <h2>Aliases</h2>
 <p>These are simple additions to <code>magrittr</code>‘s aliases, including: capitalized forms of <code>and</code> and <code>or</code> that invoke <code>&amp;&amp;</code> and <code>||</code> (the ’long-form’ logical operators) and <code>nor</code> / <code>neither</code> functions.</p>
 <p>The main motivation is to make the source code easier to indent. I occasionally find such source code easier to use.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">OR</span>(<span class="kw">OR</span>(<span class="ot">TRUE</span>,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>      <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)),  <span class="co">## short-circuits</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>   <span class="kw">AND</span>(<span class="ot">FALSE</span>,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>       <span class="kw">stop</span>(<span class="st">&quot;Never happens&quot;</span>)))  </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">OR</span>(<span class="fu">OR</span>(<span class="cn">TRUE</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;Never happens&quot;</span>)),  <span class="do">## short-circuits</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">AND</span>(<span class="cn">FALSE</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">stop</span>(<span class="st">&quot;Never happens&quot;</span>)))  </span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p><code>nor</code> (or <code>neither</code> which is identical) returns <code>TRUE</code> if and only if both arguments are <code>FALSE</code>.</p>
 </div>
@@ -371,94 +192,94 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li><code>hutils::coalesce</code> short-circuits on its first argument; if there are no <code>NA</code>s in <code>x</code> then <code>x</code> is returned, even if the other vectors are the wrong length or type.</li>
 </ol>
 <p>In addition, <code>hutils::if_else</code> is generally faster than <code>dplyr::if_else</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>my_check &lt;-<span class="st"> </span><span class="cf">function</span>(values) {</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="kw">all</span>(<span class="kw">vapply</span>(values[<span class="op">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="kw">identical</span>(values[[<span class="dv">1</span>]], x), <span class="kw">logical</span>(<span class="dv">1</span>)))</span>
-<span id="cb12-3"><a href="#cb12-3"></a>}</span>
-<span id="cb12-4"><a href="#cb12-4"></a></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb12-7"><a href="#cb12-7"></a>yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb12-9"><a href="#cb12-9"></a>na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb12-10"><a href="#cb12-10"></a></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</span>
-<span id="cb12-12"><a href="#cb12-12"></a>               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</span>
-<span id="cb12-13"><a href="#cb12-13"></a>               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="st">  </span>print</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_check <span class="ot">&lt;-</span> <span class="cf">function</span>(values) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(<span class="fu">vapply</span>(values[<span class="sc">-</span><span class="dv">1</span>], <span class="cf">function</span>(x) <span class="fu">identical</span>(values[[<span class="dv">1</span>]], x), <span class="fu">logical</span>(<span class="dv">1</span>)))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>cnd <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>yes <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>no <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(<span class="at">dplyr =</span>  dplyr<span class="sc">::</span><span class="fu">if_else</span>(cnd, yes, no, na),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">if_else</span>(cnd, yes, no, na),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##    expr   min    lq   mean median     uq   max neval
-##   dplyr 6.540 8.460 11.443  8.807 11.953 86.90   100
-##  hutils 2.159 2.736  3.494  2.900  3.154 14.71   100</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>cnd &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>yes &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>no &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>na &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</span>
-<span id="cb14-7"><a href="#cb14-7"></a>               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">if_else</span>(cnd, yes, no, na),</span>
-<span id="cb14-8"><a href="#cb14-8"></a>               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="st">  </span>print</span></code></pre></div>
+##   dplyr 6.546 8.047 11.458  8.561 12.536 81.15   100
+##  hutils 2.069 2.687  3.496  2.794  3.065 12.72   100</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cnd <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>yes <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>no <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(<span class="at">dplyr =</span>  dplyr<span class="sc">::</span><span class="fu">if_else</span>(cnd, yes, no, na),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">if_else</span>(cnd, yes, no, na),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median    uq    max neval
-##   dplyr 5.472 5.911 7.355  6.890 7.845 14.505   100
-##  hutils 1.295 1.401 2.031  1.635 1.813  9.176   100</code></pre>
+##    expr   min    lq  mean median    uq   max neval
+##   dplyr 5.252 5.377 6.716  6.055 7.645 15.30   100
+##  hutils 1.268 1.322 2.435  1.397 1.653 74.44   100</code></pre>
 <p>This speed advantage also appears to be true of <code>coalesce</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb16-3"><a href="#cb16-3"></a>B &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>C &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb16-7"><a href="#cb16-7"></a>               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb16-8"><a href="#cb16-8"></a>               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="st">  </span>print</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(<span class="at">dplyr =</span>  dplyr<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median    uq    max neval
-##   dplyr 1.488 1.566 2.738  1.732 2.033 74.584   100
-##  hutils 1.027 1.132 1.678  1.213 1.663  5.904   100</code></pre>
+##    expr   min    lq  mean median    uq   max neval
+##   dplyr 1.496 1.559 2.050  1.674 2.165 7.546   100
+##  hutils 1.020 1.057 1.613  1.140 1.482 6.311   100</code></pre>
 <p>especially during short-circuits:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb18-4"><a href="#cb18-4"></a>               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb18-5"><a href="#cb18-5"></a>               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="st">  </span>print</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(<span class="at">dplyr =</span>  dplyr<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr  min      lq    mean median     uq    max neval
-##   dplyr 1351 1402.55 1902.31 1489.5 1849.5 5699.8   100
-##  hutils   61   63.15   90.41   75.7  100.2  326.2   100</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb20-2"><a href="#cb20-2"></a>A &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(letters), <span class="dt">size =</span> <span class="fl">100e3</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb20-3"><a href="#cb20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="kw">microbenchmark</span>(<span class="dt">dplyr =</span>  dplyr<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb20-5"><a href="#cb20-5"></a>               <span class="dt">hutils =</span> hutils<span class="op">::</span><span class="kw">coalesce</span>(x, A, B, C),</span>
-<span id="cb20-6"><a href="#cb20-6"></a>               <span class="dt">check =</span> my_check) <span class="op">%&gt;%</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="st">  </span>print</span></code></pre></div>
+##    expr    min     lq    mean median      uq     max neval
+##   dplyr 1383.5 1425.4 2602.91 1510.2 1867.85 80728.7   100
+##  hutils   61.7   63.1   76.03   69.3   79.45   195.6   100</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(<span class="at">dplyr =</span>  dplyr<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min     lq   mean median     uq   max neval
-##   dplyr 1466.6 1529.6 2603.0 1625.6 1786.0 70460   100
-##  hutils  659.8  729.6  940.3  815.9  905.9  4765   100</code></pre>
+##    expr    min     lq mean median   uq  max neval
+##   dplyr 1478.2 1537.7 1957 1616.9 2032 5261   100
+##  hutils  646.2  701.8 1020  832.4 1017 4627   100</code></pre>
 </div>
 <div id="drop-columns" class="section level2">
 <h2>Drop columns</h2>
 <p>To drop a column from a <code>data.table</code>, you set it to <code>NULL</code></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>DT[, A <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="ot">NULL</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">C =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>DT[, A <span class="sc">:</span><span class="er">=</span> <span class="cn">NULL</span>]</span></code></pre></div>
 <p>There’s nothing wrong with this, but I’ve found the following a useful alias, especially in a <code>magrittr</code> pipe.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>DT <span class="op">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;A&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="st">  </span><span class="kw">drop_col</span>(<span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">C =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>DT <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_col</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_col</span>(<span class="st">&quot;B&quot;</span>)</span></code></pre></div>
 <pre><code>##    C
 ## 1: 1
 ## 2: 2
 ## 3: 3
 ## 4: 4
 ## 5: 5</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># or</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">A =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">B =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">C =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb25-3"><a href="#cb25-3"></a>DT <span class="op">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="st">  </span><span class="kw">drop_cols</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">A =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">B =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">C =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>DT <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_cols</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span></code></pre></div>
 <pre><code>##    C
 ## 1: 1
 ## 2: 2
@@ -467,11 +288,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 5: 5</code></pre>
 <p>These functions simple invoke the canonical form, so won’t be any faster.</p>
 <p>Additionally, one can drop columns by a regular expression using <code>drop_colr</code>:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>flights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(flights)</span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;time&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="st">  </span><span class="kw">drop_colr</span>(<span class="st">&quot;arr(?!_delay)&quot;</span>, <span class="dt">perl =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(flights)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_colr</span>(<span class="st">&quot;time&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_colr</span>(<span class="st">&quot;arr(?!_delay)&quot;</span>, <span class="at">perl =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##         year month day dep_delay arr_delay flight tailnum origin dest distance
 ##      1: 2013     1   1         2        11   1545  N14228    EWR  IAH     1400
 ##      2: 2013     1   1         4        20   1714  N24211    LGA  IAH     1416
@@ -500,9 +321,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="drop_constant_cols" class="section level2">
 <h2><code>drop_constant_cols</code></h2>
 <p>When a table is filtered, the filtrate is often redundant.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="st">  </span>.[origin <span class="op">==</span><span class="st"> &quot;JFK&quot;</span>] <span class="op">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="st">  </span>drop_constant_cols</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  .[origin <span class="sc">==</span> <span class="st">&quot;JFK&quot;</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  drop_constant_cols</span></code></pre></div>
 <pre><code>##         month day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##      1:     1   1      542            540         2      923            850
 ##      2:     1   1      544            545        -1     1004           1022
@@ -543,9 +364,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="drop_empty_cols" class="section level2">
 <h2><code>drop_empty_cols</code></h2>
 <p>This function drops columns in which all the values are <code>NA</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>planes <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)]</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  as.data.table <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">complete.cases</span>(.)]</span></code></pre></div>
 <pre><code>##       tailnum year                    type                  manufacturer
 ##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
 ##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
@@ -570,11 +391,11 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 3297:   717-200       2   100    NA Turbo-fan
 ## 3298:     MD-88       2   142    NA Turbo-jet
 ## 3299:     MD-88       2   142    NA Turbo-jet</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>planes <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="st">  </span>as.data.table <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="st">  </span>.[<span class="op">!</span><span class="kw">complete.cases</span>(.)] <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="st">  </span><span class="co"># drops speed</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="st">  </span>drop_empty_cols</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>planes <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  as.data.table <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">complete.cases</span>(.)] <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># drops speed</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  drop_empty_cols</span></code></pre></div>
 <pre><code>##       tailnum year                    type                  manufacturer
 ##    1:  N10156 2004 Fixed wing multi engine                       EMBRAER
 ##    2:  N102UW 1998 Fixed wing multi engine              AIRBUS INDUSTRIE
@@ -603,9 +424,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="duplicated_rows" class="section level2">
 <h2><code>duplicated_rows</code></h2>
 <p>There are many useful functions for detecting duplicates in R. However, in interactive use, I often want to not merely see which values are duplicated, but also compare them to the original. This is especially true when I am comparing duplicates across a <em>subset</em> of columns in a a <code>data.table</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="st">  </span><span class="co"># only the &#39;second&#39; of the duplicates is returned</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="st">  </span>.[<span class="kw">duplicated</span>(., <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))]  </span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># only the &#39;second&#39; of the duplicates is returned</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">duplicated</span>(., <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))]  </span></code></pre></div>
 <pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
 ##      1: 2013     1   1      600            600         0      837
 ##      2: 2013     1   1      607            607         0      858
@@ -642,10 +463,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 336550:      764   12     10 2013-09-30 12:00:00
 ## 336551:      419   11     59 2013-09-30 11:00:00
 ## 336552:      431    8     40 2013-09-30 08:00:00</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="st">  </span><span class="co"># Both rows are returned and (by default)</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a><span class="st">  </span><span class="co"># duplicates are presented adjacently</span></span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="st">  </span><span class="kw">duplicated_rows</span>(<span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Both rows are returned and (by default)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># duplicates are presented adjacently</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">duplicated_rows</span>(<span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;origin&quot;</span>, <span class="st">&quot;dest&quot;</span>))</span></code></pre></div>
 <pre><code>##         year month day dep_time sched_dep_time dep_delay arr_time
 ##      1: 2013     1   1     1315           1317        -2     1413
 ##      2: 2013     1   1     1655           1621        34     1804
@@ -687,39 +508,39 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Haversine distance</h2>
 <p>To emphasize the miscellany of this package, I now present <code>haversine_distance</code> which simply returns the distance between two points on the Earth, given their latitude and longitude.</p>
 <p>I prefer this to other packages’ implementations. Although the <code>geosphere</code> package can do a lot more than calculate distances between points, I find the interface for <code>distHaversine</code> unfortunate as it cannot be easily used inside a <code>data.frame</code>. In addition, I’ve found the arguments clearer in <code>hutils::haversine_distance</code> rather than trying to remember whether to use <code>byrow</code> inside the <code>matrix</code> function while passing to <code>distHaversine</code>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>DT1 &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">lat_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</span>
-<span id="cb39-2"><a href="#cb39-2"></a>                  <span class="dt">lon_orig =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>),</span>
-<span id="cb39-3"><a href="#cb39-3"></a>                  <span class="dt">lat_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-80</span>, <span class="dv">80</span>),</span>
-<span id="cb39-4"><a href="#cb39-4"></a>                  <span class="dt">lon_dest =</span> <span class="kw">runif</span>(<span class="fl">1e5</span>, <span class="dv">-179</span>, <span class="dv">179</span>))</span>
-<span id="cb39-5"><a href="#cb39-5"></a></span>
-<span id="cb39-6"><a href="#cb39-6"></a>DT2 &lt;-<span class="st"> </span><span class="kw">copy</span>(DT1)</span>
-<span id="cb39-7"><a href="#cb39-7"></a></span>
-<span id="cb39-8"><a href="#cb39-8"></a><span class="kw">microbenchmark</span>(DT1[, <span class="dt">distance :=</span> <span class="kw">haversine_distance</span>(lat_orig, lon_orig,</span>
-<span id="cb39-9"><a href="#cb39-9"></a>                                                    lat_dest, lon_dest)],</span>
-<span id="cb39-10"><a href="#cb39-10"></a>               </span>
-<span id="cb39-11"><a href="#cb39-11"></a>               DT2[, <span class="dt">distance :=</span> <span class="kw">distHaversine</span>(<span class="kw">cbind</span>(lon_orig, lat_orig),</span>
-<span id="cb39-12"><a href="#cb39-12"></a>                                               <span class="kw">cbind</span>(lon_orig, lat_orig))])</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>DT1 <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">lat_orig =</span> <span class="fu">runif</span>(<span class="fl">1e5</span>, <span class="sc">-</span><span class="dv">80</span>, <span class="dv">80</span>),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lon_orig =</span> <span class="fu">runif</span>(<span class="fl">1e5</span>, <span class="sc">-</span><span class="dv">179</span>, <span class="dv">179</span>),</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lat_dest =</span> <span class="fu">runif</span>(<span class="fl">1e5</span>, <span class="sc">-</span><span class="dv">80</span>, <span class="dv">80</span>),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lon_dest =</span> <span class="fu">runif</span>(<span class="fl">1e5</span>, <span class="sc">-</span><span class="dv">179</span>, <span class="dv">179</span>))</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>DT2 <span class="ot">&lt;-</span> <span class="fu">copy</span>(DT1)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(DT1[, <span class="at">distance :=</span> <span class="fu">haversine_distance</span>(lat_orig, lon_orig,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>                                                    lat_dest, lon_dest)],</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>               DT2[, <span class="at">distance :=</span> <span class="fu">distHaversine</span>(<span class="fu">cbind</span>(lon_orig, lat_orig),</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>                                               <span class="fu">cbind</span>(lon_orig, lat_orig))])</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                                                             expr
 ##           DT1[, `:=`(distance, haversine_distance(lat_orig, lon_orig, lat_dest,      lon_dest))]
 ##  DT2[, `:=`(distance, distHaversine(cbind(lon_orig, lat_orig),      cbind(lon_orig, lat_orig)))]
-##    min    lq  mean median    uq    max neval
-##  21.58 22.76 25.03  23.58 24.77  47.28   100
-##  41.94 46.32 55.95  53.62 63.81 171.43   100</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="kw">rm</span>(DT1, DT2)</span></code></pre></div>
+##    min    lq  mean median    uq   max neval
+##  20.79 21.31 24.25  22.01 24.60  44.4   100
+##  40.94 45.64 53.34  51.95 55.18 140.3   100</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(DT1, DT2)</span></code></pre></div>
 </div>
 <div id="mutate_other" class="section level2">
 <h2><code>mutate_other</code></h2>
 <p>There may be occasions where a categorical variable in a <code>data.table</code> may need to modified to reduce the number of distinct categories. For example, you may want to plot a chart with a set number of facets, or ensure the smooth operation of <code>randomForest</code>, which accepts no more than 32 levels in a feature.</p>
 <p><code>mutate_other</code> keeps the <em>n</em> most common categories and changes the other categories to <code>Other</code>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb42-2"><a href="#cb42-2"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">Fruit =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;eggplant&quot;</span>),</span>
-<span id="cb42-3"><a href="#cb42-3"></a>                                <span class="dt">size =</span> <span class="dv">20</span>,</span>
-<span id="cb42-4"><a href="#cb42-4"></a>                                <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.45</span>, <span class="fl">0.25</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),</span>
-<span id="cb42-5"><a href="#cb42-5"></a>                                <span class="dt">replace =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb42-6"><a href="#cb42-6"></a>                 <span class="dt">Price =</span> <span class="kw">rpois</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
-<span id="cb42-7"><a href="#cb42-7"></a></span>
-<span id="cb42-8"><a href="#cb42-8"></a><span class="kw">kable</span>(<span class="kw">mutate_other</span>(DT, <span class="st">&quot;Fruit&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>)[])</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">Fruit =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;eggplant&quot;</span>),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="dv">20</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.45</span>, <span class="fl">0.25</span>, <span class="fl">0.15</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>),</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Price =</span> <span class="fu">rpois</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">mutate_other</span>(DT, <span class="st">&quot;Fruit&quot;</span>, <span class="at">n =</span> <span class="dv">3</span>)[])</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -825,26 +646,26 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="ein-and-enotin" class="section level3">
 <h3><code>%ein%</code> and <code>%enotin%</code></h3>
 <p>The functions <code>%ein%</code> and <code>%enotin%</code> are motivated by a different sort of problem. Consider the following statement:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</span>
-<span id="cb43-2"><a href="#cb43-2"></a>iris[Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(iris)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>iris[Species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="sc">%$%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(Sepal.Length <span class="sc">/</span> Sepal.Width)</span></code></pre></div>
 <pre><code>## [1] 1.47</code></pre>
 <p>On the face of it, this appears to give the average ratio of <em>Iris setosa</em> and <em>Iris versicolour</em> irises. However, it only gives the average ratio of <em>setosa</em> irises, as the correct spelling is <em>Iris versicolor</em> not <em>-our</em>. This particular error is easy to make, (in fact when I wrote this vignette, the first hit of Google for <code>iris dataset</code> made the same spelling error), but it’s easy to imagine similar mistakes, such as mistaking the capitalization of a value. The functions <code>%ein%</code> and <code>%enotin%</code> strive to reduce the occurrence of this mistake. The functions operate exactly the same as <code>%in%</code> and <code>%enotin%</code> but error if any of the table of values to be matched against is not present in any of the values:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>iris &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(iris)</span>
-<span id="cb45-2"><a href="#cb45-2"></a>iris[Species <span class="op">%ein%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="op">%$%</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="st">  </span><span class="kw">mean</span>(Sepal.Length <span class="op">/</span><span class="st"> </span>Sepal.Width)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(iris)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>iris[Species <span class="sc">%ein%</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolour&quot;</span>)] <span class="sc">%$%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(Sepal.Length <span class="sc">/</span> Sepal.Width)</span></code></pre></div>
 <pre><code>## Error: `rhs` contained versicolour, but this value was not found in `lhs = Species`. All values of `rhs` must be in `lhs`. Ensure you have specified `rhs` correctly.</code></pre>
 <p>The <code>e</code> stands for ‘exists’; <em>i.e.</em> they should be read as “exists and in” and “exists and not in”.</p>
 </div>
 <div id="pin" class="section level3">
 <h3><code>%pin%</code></h3>
 <p>This performs a partial match (<em>i.e</em> <code>grepl</code>) but with a possibly more readable or intuitive syntax</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="kw">identical</span>(iris[<span class="kw">grep</span>(<span class="st">&quot;v&quot;</span>, Species)],</span>
-<span id="cb47-2"><a href="#cb47-2"></a>          iris[Species <span class="op">%pin%</span><span class="st"> &quot;v&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(iris[<span class="fu">grep</span>(<span class="st">&quot;v&quot;</span>, Species)],</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>          iris[Species <span class="sc">%pin%</span> <span class="st">&quot;v&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>If the RHS has more than one element, the matching is done on alternation (<em>i.e.</em> OR):</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>iris[Species <span class="op">%pin%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ver&quot;</span>, <span class="st">&quot;vir&quot;</span>)] <span class="op">%&gt;%</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a><span class="st">  </span>head</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>iris[Species <span class="sc">%pin%</span> <span class="fu">c</span>(<span class="st">&quot;ver&quot;</span>, <span class="st">&quot;vir&quot;</span>)] <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 1:          7.0         3.2          4.7         1.4 versicolor
 ## 2:          6.4         3.2          4.5         1.5 versicolor
@@ -861,10 +682,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="select_which" class="section level3">
 <h3><code>select_which</code></h3>
 <p>This provides a similar role to <code>dplyr::select_if</code> but was originally part of <code>package:grattan</code> so has a different name. It simply returns the columns whose <em>values</em> return <code>TRUE</code> when <code>Which</code> is applied. Additional columns (which may or not may satisfy <code>Which</code>) may be included by using <code>.and.dots</code>. (To remove columns, you can use <code>drop_col</code>).</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb51-2"><a href="#cb51-2"></a>                 <span class="dt">y =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],</span>
-<span id="cb51-3"><a href="#cb51-3"></a>                 <span class="dt">AB =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</span>
-<span id="cb51-4"><a href="#cb51-4"></a><span class="kw">select_which</span>(DT, anyNA, <span class="dt">.and.dots =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">AB =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select_which</span>(DT, anyNA, <span class="at">.and.dots =</span> <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
 <pre><code>##       AB y
 ## 1:    NA a
 ## 2:  TRUE b
@@ -887,18 +708,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="auc" class="section level3">
 <h3><code>auc</code></h3>
 <p>The area under the <a href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">(ROC) curve</a> gives a single value to measure the tradeoff between true positives and false positives.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">y =</span> <span class="op">!</span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </span>
-<span id="cb53-2"><a href="#cb53-2"></a>                 <span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">100</span>))</span>
-<span id="cb53-3"><a href="#cb53-3"></a>dt[, pred <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">predict</span>(<span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> .SD), <span class="dt">newdata =</span> .SD)]</span>
-<span id="cb53-4"><a href="#cb53-4"></a></span>
-<span id="cb53-5"><a href="#cb53-5"></a>dt[, <span class="kw">auc</span>(y, pred)]</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">y =</span> <span class="sc">!</span><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">100</span>))</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>dt[, pred <span class="sc">:</span><span class="er">=</span> <span class="fu">predict</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> .SD), <span class="at">newdata =</span> .SD)]</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>dt[, <span class="fu">auc</span>(y, pred)]</span></code></pre></div>
 <pre><code>## [1] 0.577</code></pre>
 </div>
 <div id="select_grep" class="section level3">
 <h3><code>select_grep</code></h3>
 <p>To select columns matching a regular expression:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_grep</span>(<span class="st">&quot;arr&quot;</span>)</span></code></pre></div>
 <pre><code>##         arr_time sched_arr_time arr_delay carrier
 ##      1:      830            819        11      UA
 ##      2:      850            830        20      UA
@@ -912,8 +733,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 336775:       NA           1344        NA      MQ
 ## 336776:       NA           1020        NA      MQ</code></pre>
 <p>You can use the additional arguments <code>.and</code> and <code>.but.not</code> to override the patterns.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="st">  </span><span class="kw">select_grep</span>(<span class="st">&quot;arr&quot;</span>, <span class="dt">.and =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">.but.not =</span> <span class="st">&quot;arr_time&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_grep</span>(<span class="st">&quot;arr&quot;</span>, <span class="at">.and =</span> <span class="st">&quot;year&quot;</span>, <span class="at">.but.not =</span> <span class="st">&quot;arr_time&quot;</span>)</span></code></pre></div>
 <pre><code>##         year sched_arr_time arr_delay carrier
 ##      1: 2013            819        11      UA
 ##      2: 2013            830        20      UA
@@ -933,59 +754,61 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="rq" class="section level3">
 <h3><code>RQ</code></h3>
 <p>This is simply a shorthand to test whether a package needs installing. The package name need not be quoted, for convenience.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="kw">RQ</span>(dplyr, <span class="st">&quot;dplyr must be installed&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RQ</span>(dplyr, <span class="st">&quot;dplyr must be installed&quot;</span>)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="kw">RQ</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;dplyr needs installing&quot;</span>, <span class="st">&quot;dplyr installed.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RQ</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;dplyr needs installing&quot;</span>, <span class="st">&quot;dplyr installed.&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;dplyr installed.&quot;</code></pre>
 </div>
 <div id="ahull" class="section level3">
 <h3><code>ahull</code></h3>
 <p>This locates the biggest rectangle beneath a curve:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="kw">ggplot</span>(<span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))) <span class="op">+</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
-<span id="cb63-3"><a href="#cb63-3"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(, <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>)),</span>
-<span id="cb63-4"><a href="#cb63-4"></a>            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin,</span>
-<span id="cb63-5"><a href="#cb63-5"></a>                <span class="dt">xmax =</span> xmax,</span>
-<span id="cb63-6"><a href="#cb63-6"></a>                <span class="dt">ymin =</span> ymin,</span>
-<span id="cb63-7"><a href="#cb63-7"></a>                <span class="dt">ymax =</span> ymax),</span>
-<span id="cb63-8"><a href="#cb63-8"></a>            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">identical</span>(<span class="fu">Sys.info</span>()[[<span class="st">&quot;sysname&quot;</span>]], <span class="st">&quot;Darwin&quot;</span>))</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">data.table</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>))) <span class="sc">+</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">ahull</span>(, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.1</span>, <span class="dv">0</span>)),</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">xmin =</span> xmin,</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmax =</span> xmax,</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> ymin,</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymax =</span> ymax),</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) </span></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="kw">set.seed</span>(<span class="dv">101</span>)</span>
-<span id="cb64-2"><a href="#cb64-2"></a>ahull_dt &lt;-</span>
-<span id="cb64-3"><a href="#cb64-3"></a><span class="st">  </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">100</span>) <span class="op">/</span><span class="st"> </span><span class="dv">100</span>,</span>
-<span id="cb64-4"><a href="#cb64-4"></a>             <span class="dt">y =</span> <span class="kw">cumsum</span>(<span class="kw">rnorm</span>(<span class="dv">101</span>, <span class="fl">0.05</span>)))</span>
-<span id="cb64-5"><a href="#cb64-5"></a><span class="kw">ggplot</span>(ahull_dt) <span class="op">+</span></span>
-<span id="cb64-6"><a href="#cb64-6"></a><span class="st">  </span><span class="kw">geom_area</span>(<span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-7"><a href="#cb64-7"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt), </span>
-<span id="cb64-8"><a href="#cb64-8"></a>            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </span>
-<span id="cb64-9"><a href="#cb64-9"></a>                <span class="dt">xmax =</span> xmax, </span>
-<span id="cb64-10"><a href="#cb64-10"></a>                <span class="dt">ymin =</span> ymin, </span>
-<span id="cb64-11"><a href="#cb64-11"></a>                <span class="dt">ymax =</span> ymax), </span>
-<span id="cb64-12"><a href="#cb64-12"></a>            <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-13"><a href="#cb64-13"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</span>
-<span id="cb64-14"><a href="#cb64-14"></a>                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>), </span>
-<span id="cb64-15"><a href="#cb64-15"></a>            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </span>
-<span id="cb64-16"><a href="#cb64-16"></a>                <span class="dt">xmax =</span> xmax, </span>
-<span id="cb64-17"><a href="#cb64-17"></a>                <span class="dt">ymin =</span> ymin, </span>
-<span id="cb64-18"><a href="#cb64-18"></a>                <span class="dt">ymax =</span> ymax), </span>
-<span id="cb64-19"><a href="#cb64-19"></a>            <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-20"><a href="#cb64-20"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</span>
-<span id="cb64-21"><a href="#cb64-21"></a>                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb64-22"><a href="#cb64-22"></a>                         <span class="dt">minH =</span> <span class="dv">4</span>), </span>
-<span id="cb64-23"><a href="#cb64-23"></a>            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </span>
-<span id="cb64-24"><a href="#cb64-24"></a>                <span class="dt">xmax =</span> xmax, </span>
-<span id="cb64-25"><a href="#cb64-25"></a>                <span class="dt">ymin =</span> ymin, </span>
-<span id="cb64-26"><a href="#cb64-26"></a>                <span class="dt">ymax =</span> ymax), </span>
-<span id="cb64-27"><a href="#cb64-27"></a>            <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-28"><a href="#cb64-28"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">data =</span> <span class="kw">ahull</span>(ahull_dt,</span>
-<span id="cb64-29"><a href="#cb64-29"></a>                         <span class="dt">incl_negative =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb64-30"><a href="#cb64-30"></a>                         <span class="dt">minW =</span> <span class="fl">0.25</span>), </span>
-<span id="cb64-31"><a href="#cb64-31"></a>            <span class="kw">aes</span>(<span class="dt">xmin =</span> xmin, </span>
-<span id="cb64-32"><a href="#cb64-32"></a>                <span class="dt">xmax =</span> xmax, </span>
-<span id="cb64-33"><a href="#cb64-33"></a>                <span class="dt">ymin =</span> ymin, </span>
-<span id="cb64-34"><a href="#cb64-34"></a>                <span class="dt">ymax =</span> ymax), </span>
-<span id="cb64-35"><a href="#cb64-35"></a>            <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb64-36"><a href="#cb64-36"></a>            <span class="dt">fill =</span> <span class="ot">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">101</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>ahull_dt <span class="ot">&lt;-</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.table</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">101</span>, <span class="fl">0.05</span>)))</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">identical</span>(<span class="fu">Sys.info</span>()[[<span class="st">&quot;sysname&quot;</span>]], <span class="st">&quot;Darwin&quot;</span>))</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ahull_dt) <span class="sc">+</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">ahull</span>(ahull_dt), </span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">xmin =</span> xmin, </span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmax =</span> xmax, </span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> ymin, </span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymax =</span> ymax), </span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">ahull</span>(ahull_dt,</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a>                         <span class="at">incl_negative =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">xmin =</span> xmin, </span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmax =</span> xmax, </span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> ymin, </span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymax =</span> ymax), </span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">ahull</span>(ahull_dt,</span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>                         <span class="at">incl_negative =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>                         <span class="at">minH =</span> <span class="dv">4</span>), </span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">xmin =</span> xmin, </span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmax =</span> xmax, </span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> ymin, </span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymax =</span> ymax), </span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="at">data =</span> <span class="fu">ahull</span>(ahull_dt,</span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a>                         <span class="at">incl_negative =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a>                         <span class="at">minW =</span> <span class="fl">0.25</span>), </span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">xmin =</span> xmin, </span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a>                <span class="at">xmax =</span> xmax, </span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymin =</span> ymin, </span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a>                <span class="at">ymax =</span> ymax), </span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="cn">NA</span>)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 </div>
@@ -994,20 +817,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="weighted_quantile" class="section level3">
 <h3><code>weighted_quantile</code></h3>
 <p>Simply a version of <code>quantile</code> supporting weighted values:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a>w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">5</span>))</span>
-<span id="cb65-3"><a href="#cb65-3"></a><span class="kw">quantile</span>(x, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="dt">names =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">5</span>))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.25 7.75</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">weighted_quantile</span>(x, w, <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted_quantile</span>(x, w, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code></pre></div>
 <pre><code>## [1] 4 9</code></pre>
 </div>
 <div id="mutate_ntile" class="section level3">
 <h3><code>mutate_ntile</code></h3>
 <p>To add a column of ntiles (say, for later summarizing):</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></span>
-<span id="cb69-3"><a href="#cb69-3"></a><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></span>
-<span id="cb69-4"><a href="#cb69-4"></a><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  as.data.table <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  .[, .(year, month, day, origin, dest, distance)] <span class="sc">%&gt;%</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_ntile</span>(distance, <span class="at">n =</span> 5L)</span></code></pre></div>
 <pre><code>##         year month day origin dest distance distanceQuintile
 ##      1: 2013     1   1    EWR  IAH     1400                4
 ##      2: 2013     1   1    LGA  IAH     1416                4
@@ -1021,10 +844,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 336775: 2013     9  30    LGA  CLE      419                1
 ## 336776: 2013     9  30    LGA  RDU      431                2</code></pre>
 <p>You can use non-standard evaluation (as above) or you can quote the <code>col</code> argument. Use <code>character.only = TRUE</code> to ensure column is only interpreted as character.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></span>
-<span id="cb71-3"><a href="#cb71-3"></a><span class="st">  </span>.[, .(year, month, day, origin, dest, distance)] <span class="op">%&gt;%</span></span>
-<span id="cb71-4"><a href="#cb71-4"></a><span class="st">  </span><span class="kw">mutate_ntile</span>(distance, <span class="dt">n =</span> 5L)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  as.data.table <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  .[, .(year, month, day, origin, dest, distance)] <span class="sc">%&gt;%</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_ntile</span>(distance, <span class="at">n =</span> 5L)</span></code></pre></div>
 <pre><code>##         year month day origin dest distance distanceQuintile
 ##      1: 2013     1   1    EWR  IAH     1400                4
 ##      2: 2013     1   1    LGA  IAH     1416                4
@@ -1037,13 +860,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 336774: 2013     9  30    LGA  BNA      764                3
 ## 336775: 2013     9  30    LGA  CLE      419                1
 ## 336776: 2013     9  30    LGA  RDU      431                2</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>flights <span class="op">%&gt;%</span></span>
-<span id="cb73-2"><a href="#cb73-2"></a><span class="st">  </span>as.data.table <span class="op">%&gt;%</span></span>
-<span id="cb73-3"><a href="#cb73-3"></a><span class="st">  </span><span class="kw">mutate_ntile</span>(<span class="st">&quot;distance&quot;</span>,</span>
-<span id="cb73-4"><a href="#cb73-4"></a>               <span class="dt">n =</span> 5L,</span>
-<span id="cb73-5"><a href="#cb73-5"></a>               <span class="dt">character.only =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb73-6"><a href="#cb73-6"></a><span class="st">  </span>.[, dep_delay <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">coalesce</span>(dep_delay, <span class="dv">0</span>)] <span class="op">%&gt;%</span></span>
-<span id="cb73-7"><a href="#cb73-7"></a><span class="st">  </span>.[, .(<span class="dt">avgDelay =</span> <span class="kw">mean</span>(dep_delay)), keyby =<span class="st"> &quot;distanceQuintile&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  as.data.table <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_ntile</span>(<span class="st">&quot;distance&quot;</span>,</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">n =</span> 5L,</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">character.only =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  .[, dep_delay <span class="sc">:</span><span class="er">=</span> <span class="fu">coalesce</span>(dep_delay, <span class="dv">0</span>)] <span class="sc">%&gt;%</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  .[, .(<span class="at">avgDelay =</span> <span class="fu">mean</span>(dep_delay)), keyby <span class="ot">=</span> <span class="st">&quot;distanceQuintile&quot;</span>]</span></code></pre></div>
 <pre><code>##    distanceQuintile avgDelay
 ## 1:                1    12.88
 ## 2:                2    12.97
@@ -1054,8 +877,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="longest_affix" class="section level3">
 <h3><code>longest_affix</code></h3>
 <p>Trim common affixes can be useful during data cleaning:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="kw">trim_common_affixes</span>(<span class="kw">c</span>(<span class="st">&quot;CurrentHousingCosts(weekly)&quot;</span>,</span>
-<span id="cb75-2"><a href="#cb75-2"></a>                      <span class="st">&quot;CurrentFuelCosts(weekly)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">trim_common_affixes</span>(<span class="fu">c</span>(<span class="st">&quot;CurrentHousingCosts(weekly)&quot;</span>,</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;CurrentFuelCosts(weekly)&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Housing&quot; &quot;Fuel&quot;</code></pre>
 </div>
 </div>
@@ -1064,18 +887,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="section" class="section level3">
 <h3><code>%&lt;-&gt;%</code></h3>
 <p>Referred to as <code>swap</code> in the documentation. Used to swap values between object names</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>a &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a>b &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb77-3"><a href="#cb77-3"></a>a <span class="op">%&lt;-&gt;%</span><span class="st"> </span>b</span>
-<span id="cb77-4"><a href="#cb77-4"></a><span class="kw">identical</span>(<span class="kw">c</span>(a, b), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%&lt;-&gt;%</span> b</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">c</span>(a, b), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="average_bearing" class="section level3">
 <h3><code>average_bearing</code></h3>
 <p>Determine the average bearing of vectors. Slightly more difficult than simply the average modulo 360 since its the most acute sector is desired.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="kw">average_bearing</span>(<span class="dv">0</span>, <span class="dv">270</span>)  <span class="co"># NW</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">average_bearing</span>(<span class="dv">0</span>, <span class="dv">270</span>)  <span class="co"># NW</span></span></code></pre></div>
 <pre><code>## [1] 315</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">270</span>))          <span class="co"># SE (i.e. wrong)</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">270</span>))          <span class="co"># SE (i.e. wrong)</span></span></code></pre></div>
 <pre><code>## [1] 135</code></pre>
 </div>
 <div id="dir2" class="section level3">
@@ -1085,7 +908,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="mode" class="section level3">
 <h3><code>Mode</code></h3>
 <p>The statistical mode; the most common element.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="kw">Mode</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Mode</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="replace_pattern_in" class="section level3">
@@ -1095,9 +918,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="samp" class="section level3">
 <h3><code>samp</code></h3>
 <p>A safer version of <code>sample</code>. I use it because I found the following behaviour of sample surprising.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb85-2"><a href="#cb85-2"></a>                 <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb85-3"><a href="#cb85-3"></a>DT[, .(<span class="dt">Base =</span> <span class="kw">sample</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>DT[, .(<span class="at">Base =</span> <span class="fu">sample</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="sc">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby <span class="ot">=</span> .(x, y)]</span></code></pre></div>
 <pre><code>##    x y Base
 ## 1: 2 3    2
 ## 2: 2 3    3
@@ -1108,7 +931,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 ## 7: 5 5    5
 ## 8: 5 5    4
 ## 9: 5 5    2</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>DT[, .(<span class="dt">Base =</span> <span class="kw">samp</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="op">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby =<span class="st"> </span>.(x, y)]</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>DT[, .(<span class="at">Base =</span> <span class="fu">samp</span>(.BY[[<span class="st">&quot;x&quot;</span>]]<span class="sc">:</span>.BY[[<span class="st">&quot;y&quot;</span>]])), keyby <span class="ot">=</span> .(x, y)]</span></code></pre></div>
 <pre><code>## `length(x) = 1`, so returning `rep.int(x, 1)`.</code></pre>
 <pre><code>##    x y Base
 ## 1: 2 3    2
