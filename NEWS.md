@@ -1,3 +1,29 @@
+## hutils 1.8.1
+
+* Internal:
+  - Fix class() == "character" infelicity
+
+* Enhancements
+  - `select_which` gains argument `.and.grep`
+  
+
+## hutils 1.8.0
+
+* Bug fixes:
+  - `longest_affix` now correctly returns single character prefixes. (#40) 
+    Thanks to @piosierra for reporting.
+    
+
+* New functions
+  - `seq_nrow(x) = seq_len(nrow(x))` for abbreviation
+  - `fst_columns`, `fst_nrow` the names `nrow` of an `fst` file
+  
+* Enhancements:
+  - `if_else` now supports `raw` output
+  
+* Performance:
+  - `drop_empty_cols` uses `is.na(x[1])` rather than `anyNA(x)` for higher 
+    performance on non-empty columns and `hutilscpp` if available
 
 ## hutils 1.7.1
 

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Hugh Parsonage" />
 
-<meta name="date" content="2021-07-22" />
+<meta name="date" content="2022-04-14" />
 
 <title>Hutils</title>
 
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">Hutils</h1>
 <h4 class="author">Hugh Parsonage</h4>
-<h4 class="date">2021-07-22</h4>
+<h4 class="date">2022-04-14</h4>
 
 
 
@@ -208,8 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##    expr   min    lq   mean median     uq   max neval
-##   dplyr 6.546 8.047 11.458  8.561 12.536 81.15   100
-##  hutils 2.069 2.687  3.496  2.794  3.065 12.72   100</code></pre>
+##   dplyr 6.413 8.084 10.179  8.191 10.443 79.64   100
+##  hutils 2.142 2.696  3.163  2.739  2.819 10.74   100</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cnd <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>yes <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>no <span class="ot">&lt;-</span> <span class="fu">sample</span>(letters, <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
@@ -221,8 +221,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##    expr   min    lq  mean median    uq   max neval
-##   dplyr 5.252 5.377 6.716  6.055 7.645 15.30   100
-##  hutils 1.268 1.322 2.435  1.397 1.653 74.44   100</code></pre>
+##   dplyr 5.279 5.379 6.415  5.494 6.707 12.28   100
+##  hutils 1.272 1.326 2.328  1.369 1.639 68.85   100</code></pre>
 <p>This speed advantage also appears to be true of <code>coalesce</code>:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
@@ -233,10 +233,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">hutils =</span> hutils<span class="sc">::</span><span class="fu">coalesce</span>(x, A, B, C),</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
-<pre><code>## Unit: milliseconds
-##    expr   min    lq  mean median    uq   max neval
-##   dplyr 1.496 1.559 2.050  1.674 2.165 7.546   100
-##  hutils 1.020 1.057 1.613  1.140 1.482 6.311   100</code></pre>
+<pre><code>## Unit: microseconds
+##    expr  min   lq mean median   uq  max neval
+##   dplyr 1476 1518 1892   1561 1791 7209   100
+##  hutils  993 1028 1466   1059 1362 4888   100</code></pre>
 <p>especially during short-circuits:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -245,9 +245,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min     lq    mean median      uq     max neval
-##   dplyr 1383.5 1425.4 2602.91 1510.2 1867.85 80728.7   100
-##  hutils   61.7   63.1   76.03   69.3   79.45   195.6   100</code></pre>
+##    expr    min     lq    mean median   uq     max neval
+##   dplyr 1358.2 1391.6 2362.12 1405.4 1694 69825.5   100
+##  hutils   59.1   61.8   67.23   64.2   68   121.6   100</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters, <span class="cn">NA</span>), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(letters), <span class="at">size =</span> <span class="fl">100e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -256,9 +256,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">check =</span> my_check) <span class="sc">%&gt;%</span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  print</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min     lq mean median   uq  max neval
-##   dplyr 1478.2 1537.7 1957 1616.9 2032 5261   100
-##  hutils  646.2  701.8 1020  832.4 1017 4627   100</code></pre>
+##    expr    min     lq   mean median     uq  max neval
+##   dplyr 1483.6 1521.6 1847.6 1554.6 1666.5 5424   100
+##  hutils  653.9  676.7  894.3  710.8  849.5 4184   100</code></pre>
 </div>
 <div id="drop-columns" class="section level2">
 <h2>Drop columns</h2>
@@ -524,9 +524,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                                                                                             expr
 ##           DT1[, `:=`(distance, haversine_distance(lat_orig, lon_orig, lat_dest,      lon_dest))]
 ##  DT2[, `:=`(distance, distHaversine(cbind(lon_orig, lat_orig),      cbind(lon_orig, lat_orig)))]
-##    min    lq  mean median    uq   max neval
-##  20.79 21.31 24.25  22.01 24.60  44.4   100
-##  40.94 45.64 53.34  51.95 55.18 140.3   100</code></pre>
+##    min    lq  mean median    uq    max neval
+##  20.54 21.44 22.47  21.64 22.08  31.72   100
+##  40.25 44.30 48.64  48.74 50.10 134.29   100</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(DT1, DT2)</span></code></pre></div>
 </div>
 <div id="mutate_other" class="section level2">
